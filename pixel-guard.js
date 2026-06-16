@@ -200,11 +200,19 @@
       "width:0;height:0;overflow:hidden;opacity:0;" +
       "pointer-events:none;tab-index:-1;";
 
+    // Nombre NO semántico: ningún navegador ni gestor de contraseñas
+    // (1Password/LastPass/etc.) lo autocompleta. Evita palabras como
+    // website/url/company/email/name/address/phone que disparan autofill
+    // y bloquearían a humanos reales con autocompletado activo.
     var input = document.createElement("input");
     input.type = "text";
-    input.name = "pg_website_url";
+    input.name = "pg_hp_token";
+    input.id = "pg_hp_token";
     input.tabIndex = -1;
     input.autocomplete = "off";
+    input.setAttribute("data-lpignore", "true");   // LastPass
+    input.setAttribute("data-1p-ignore", "");        // 1Password
+    input.setAttribute("data-form-type", "other");   // navegadores/Chrome
     input.className = CFG.honeypotClass;
 
     wrapper.appendChild(input);
