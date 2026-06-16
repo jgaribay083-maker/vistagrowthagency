@@ -173,7 +173,10 @@
     </div>
 
     <form id="briefForm" novalidate>
-      <input type="text" class="pg-hp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <!-- honeypot anti-bot: nombre NO semantico + bloqueo de autofill/gestores de contrasenas
+           para que el navegador NO lo rellene solo (eso bloqueaba a humanos reales). -->
+      <input type="text" class="pg-hp" name="pg_hp_token" id="pg_hp_token" tabindex="-1"
+             autocomplete="off" aria-hidden="true" data-lpignore="true" data-1p-ignore data-form-type="other">
 
       <!-- STEP 1 -->
       <div class="step-panel active" data-name="Empresa" data-name-en="Company">
