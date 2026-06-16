@@ -76,6 +76,17 @@ header.hero .sub{font-size:clamp(16px,2.4vw,20px);color:var(--dim);font-weight:3
 .hero-inner{position:relative;z-index:2}
 header.hero h1{text-shadow:0 2px 34px rgba(0,0,0,.7)}
 header.hero .sub{color:#e7e7ea;text-shadow:0 1px 18px rgba(0,0,0,.7)}
+/* ENTRADA ANIMADA del hero al abrir la pagina (palabras en cascada + bloques) */
+@keyframes heroUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes wordUp{from{opacity:0;transform:translateY(26px) rotate(1.5deg)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+html.js .hero-inner .word{display:inline-block;opacity:0;animation:wordUp .6s cubic-bezier(.22,.9,.25,1) forwards}
+html.js .hero-inner h1 .grad-text{opacity:0;animation:fadeIn .9s ease forwards;animation-delay:.45s}
+html.js .hero-inner .eyebrow{opacity:0;animation:heroUp .7s ease forwards;animation-delay:.05s}
+html.js .hero-inner .sub{opacity:0;animation:heroUp .7s ease forwards;animation-delay:.6s}
+html.js .hero-inner .hero-cta{opacity:0;animation:heroUp .7s ease forwards;animation-delay:.78s}
+html.js .hero-inner .hero-stats{opacity:0;animation:heroUp .7s ease forwards;animation-delay:.95s}
+@media(prefers-reduced-motion:reduce){html.js .hero-inner *{animation:none!important;opacity:1!important;transform:none!important}}
 
 /* trust strip */
 .trust{position:relative;z-index:2;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:rgba(255,255,255,.012);padding:22px 0;margin-top:50px}
@@ -481,6 +492,27 @@ html.js .reveal.in{opacity:1;transform:none}
 
 <script src="pixel-guard.js"></script>
 <script>
+// HERO: parte el titulo en palabras para la entrada en cascada al abrir la pagina.
+// Solo toca los nodos de TEXTO del h1 (deja intacto el <span class="grad-text">,
+// que se anima aparte con un fade para no romper su degradado dorado).
+(function(){
+  var h1=document.querySelector('header.hero h1'); if(!h1) return;
+  var i=0;
+  Array.prototype.slice.call(h1.childNodes).forEach(function(n){
+    if(n.nodeType===3 && n.textContent.trim()){
+      var frag=document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(function(tok){
+        if(!tok) return;
+        if(/^\s+$/.test(tok)){ frag.appendChild(document.createTextNode(tok)); return; }
+        var s=document.createElement('span'); s.className='word';
+        s.textContent=tok; s.style.animationDelay=(0.08+(i++)*0.05)+'s';
+        frag.appendChild(s);
+      });
+      h1.replaceChild(frag,n);
+    }
+  });
+})();
+
 // nav scroll + mobile
 var nav=document.getElementById('nav');
 addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30);});
