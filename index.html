@@ -68,6 +68,18 @@ header.hero .sub{font-size:clamp(16px,2.4vw,20px);color:var(--dim);font-weight:3
 .hstat .n{font-family:'Playfair Display',serif;font-weight:800;font-size:38px;color:#fff;line-height:1}
 .hstat .n .gold{color:var(--gold)}
 .hstat .l{font-size:12px;color:var(--faint);text-transform:uppercase;letter-spacing:1.5px;margin-top:6px}
+/* hero a 2 columnas: texto + mockup */
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;text-align:left}
+.hero-grid .eyebrow{margin-bottom:24px}
+.hero-grid h1,.hero-grid .sub{margin-left:0;margin-right:0}
+.hero-grid h1{max-width:none}
+.hero-grid .sub{max-width:560px}
+.hero-grid .hero-cta,.hero-grid .hero-stats{justify-content:flex-start}
+.hero-visual{position:relative}
+.hero-visual img{width:100%;max-width:470px;display:block;margin:0 auto;border-radius:18px;
+  border:1px solid var(--line);box-shadow:0 40px 90px -34px rgba(0,0,0,.95),0 0 70px -24px rgba(212,175,55,.4)}
+.hero-visual::after{content:'';position:absolute;inset:-30px;z-index:-1;
+  background:radial-gradient(closest-side,rgba(212,175,55,.16),transparent 70%)}
 
 /* trust strip */
 .trust{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:rgba(255,255,255,.012);padding:22px 0;margin-top:60px}
@@ -218,6 +230,10 @@ html.js .reveal.in{opacity:1;transform:none}
   .founder{grid-template-columns:1fr;text-align:center}
   .founder .photo{max-width:200px;margin:0 auto}
   .founder .vision{text-align:left}
+  .hero-grid{grid-template-columns:1fr;text-align:center;gap:36px}
+  .hero-grid h1,.hero-grid .sub{margin-left:auto;margin-right:auto}
+  .hero-grid .hero-cta,.hero-grid .hero-stats{justify-content:center}
+  .hero-visual img{max-width:340px}
 }
 @media(max-width:640px){
   .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:74%;flex-direction:column;align-items:flex-start;justify-content:center;gap:22px;padding:40px;background:rgba(8,8,11,.97);backdrop-filter:blur(16px);border-left:1px solid var(--line-soft);transition:right .3s}
@@ -254,17 +270,24 @@ html.js .reveal.in{opacity:1;transform:none}
 <!-- HERO -->
 <header class="hero" id="top">
   <div class="container">
-    <div class="eyebrow"><span class="dot"></span> Agencia de Marketing · Phoenix, AZ · Bilingüe</div>
-    <h1>Consigue más clientes con <span class="grad-text">Meta Ads, automatización e inteligencia artificial.</span></h1>
-    <p class="sub">Ayudamos a negocios locales y empresas a generar más leads, aumentar ventas y automatizar procesos para crecer más rápido.</p>
-    <div class="hero-cta">
-      <a href="#auditoria" class="btn btn-gold btn-lg">Agenda una Auditoría Gratuita</a>
-      <a href="#proceso" class="btn btn-ghost btn-lg">Ver Cómo Funciona</a>
-    </div>
-    <div class="hero-stats">
-      <div class="hstat"><div class="n"><span class="gold">&lt;4h</span></div><div class="l">Tiempo de respuesta</div></div>
-      <div class="hstat"><div class="n"><span class="gold">48h</span></div><div class="l">Entrega de tu web</div></div>
-      <div class="hstat"><div class="n"><span class="gold">0</span></div><div class="l">Contratos forzosos</div></div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> Agencia de Marketing · Phoenix, AZ · Bilingüe</div>
+        <h1>Consigue más clientes con <span class="grad-text">Meta Ads, automatización e inteligencia artificial.</span></h1>
+        <p class="sub">Ayudamos a negocios locales y empresas a generar más leads, aumentar ventas y automatizar procesos para crecer más rápido.</p>
+        <div class="hero-cta">
+          <a href="#auditoria" class="btn btn-gold btn-lg">Agenda una Auditoría Gratuita</a>
+          <a href="#proceso" class="btn btn-ghost btn-lg">Ver Cómo Funciona</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hstat"><div class="n"><span class="gold">&lt;4h</span></div><div class="l">Tiempo de respuesta</div></div>
+          <div class="hstat"><div class="n"><span class="gold">48h</span></div><div class="l">Entrega de tu web</div></div>
+          <div class="hstat"><div class="n"><span class="gold">0</span></div><div class="l">Contratos forzosos</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="hero.jpg" alt="Dashboard de resultados de marketing: campañas de Meta Ads en crecimiento" width="896" height="1085">
+      </div>
     </div>
   </div>
   <div class="trust">
