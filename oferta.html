@@ -127,6 +127,46 @@
     .wa-float span{display:none}.wa-float{padding:14px;border-radius:99px}
     .brand{font-size:22px}
   }
+  /* ── Secciones de confianza (añadidas) ── */
+  .sec{margin-top:34px}
+  .sec-title{font-family:'Playfair Display',serif;font-weight:700;font-size:22px;text-align:center;margin-bottom:18px}
+  .incl{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--panel),#0b0b0d);padding:24px}
+  .incl ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}
+  .incl li{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:var(--txt-dim)}
+  .incl li::before{content:'✓';color:var(--gold);font-weight:700;flex:0 0 auto}
+  .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .stp{border:1px solid var(--line-soft);border-radius:14px;background:var(--bg-soft);padding:18px 14px;text-align:center}
+  .stp .n{width:34px;height:34px;border-radius:99px;margin:0 auto 10px;display:grid;place-items:center;background:rgba(212,175,55,.14);color:var(--gold);font-weight:700;font-family:'Playfair Display',serif}
+  .stp b{display:block;font-size:13px;margin-bottom:5px}
+  .stp span{font-size:11.5px;color:var(--txt-faint);line-height:1.5}
+  .anchor{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .acol{border-radius:14px;padding:20px 18px;border:1px solid var(--line-soft)}
+  .acol.bad{background:var(--bg-soft);opacity:.8}
+  .acol.good{background:linear-gradient(160deg,rgba(212,175,55,.10),#0c0c0e);border-color:var(--gold)}
+  .acol h4{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;color:var(--txt-faint)}
+  .acol.good h4{color:var(--gold)}
+  .acol p{font-size:13.5px;margin-bottom:6px;color:var(--txt-dim)}
+  .acol .big{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:#fff;margin-bottom:10px}
+  .acol.good .big{color:var(--gold)}
+  .founder{display:flex;gap:18px;align-items:center;border:1px solid var(--line);border-radius:18px;background:linear-gradient(160deg,var(--panel),#0b0b0d);padding:22px}
+  .founder .pic{width:78px;height:78px;border-radius:99px;flex:0 0 auto;background:linear-gradient(135deg,var(--gold),var(--gold-soft));display:grid;place-items:center;color:#1a1500;font-family:'Playfair Display',serif;font-weight:800;font-size:28px;overflow:hidden}
+  .founder .pic img{width:100%;height:100%;object-fit:cover}
+  .founder .who b{font-family:'Playfair Display',serif;font-size:18px}
+  .founder .who .role{font-size:12px;color:var(--gold-soft);text-transform:uppercase;letter-spacing:1px;margin:2px 0 8px}
+  .founder .who p{font-size:13px;color:var(--txt-dim);line-height:1.55}
+  .urg{margin-top:22px;border:1px dashed var(--gold);border-radius:12px;background:rgba(212,175,55,.06);padding:14px 16px;text-align:center;font-size:13.5px;color:var(--gold-soft);font-weight:600}
+  .faq details{border:1px solid var(--line-soft);border-radius:12px;background:var(--bg-soft);margin-bottom:10px;overflow:hidden}
+  .faq summary{padding:15px 16px;font-size:14px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:10px;color:var(--txt)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:'+';color:var(--gold);font-weight:700;font-size:18px;line-height:1}
+  .faq details[open] summary::after{content:'–'}
+  .faq details p{padding:0 16px 15px;font-size:13px;color:var(--txt-dim);line-height:1.6}
+  @media(max-width:480px){
+    .incl ul{grid-template-columns:1fr}
+    .steps3{grid-template-columns:1fr;gap:10px}
+    .stp{display:flex;align-items:center;gap:14px;text-align:left}.stp .n{margin:0}
+    .founder{flex-direction:column;text-align:center}
+  }
 </style>
 </head>
 <body>
@@ -156,6 +196,46 @@
       <div class="perk"><span class="ic">📱</span><b data-i18n="perk3a"></b><span data-i18n="perk3b"></span></div>
     </div>
   </section>
+
+  <!-- QUÉ INCLUYE -->
+  <div class="sec">
+    <h3 class="sec-title" data-i18n="inclTitle"></h3>
+    <div class="incl"><ul data-i18n="inclList"></ul></div>
+  </div>
+
+  <!-- CÓMO FUNCIONA -->
+  <div class="sec">
+    <h3 class="sec-title" data-i18n="howTitle"></h3>
+    <div class="steps3">
+      <div class="stp"><div class="n">1</div><b data-i18n="how1t"></b><span data-i18n="how1d"></span></div>
+      <div class="stp"><div class="n">2</div><b data-i18n="how2t"></b><span data-i18n="how2d"></span></div>
+      <div class="stp"><div class="n">3</div><b data-i18n="how3t"></b><span data-i18n="how3d"></span></div>
+    </div>
+  </div>
+
+  <!-- ANCLA DE PRECIO -->
+  <div class="sec">
+    <h3 class="sec-title" data-i18n="anchorTitle"></h3>
+    <div class="anchor">
+      <div class="acol bad"><h4 data-i18n="anchorBadT"></h4><div class="big" data-i18n="anchorBadP"></div><p data-i18n="anchorBad1"></p><p data-i18n="anchorBad2"></p></div>
+      <div class="acol good"><h4 data-i18n="anchorGoodT"></h4><div class="big">$197</div><p data-i18n="anchorGood1"></p><p data-i18n="anchorGood2"></p></div>
+    </div>
+  </div>
+
+  <!-- FUNDADOR -->
+  <div class="sec">
+    <div class="founder">
+      <div class="pic"><img src="josue.jpg" alt="Josué Garibay" onerror="this.style.display='none';this.parentNode.textContent='JG'"></div>
+      <div class="who">
+        <b data-i18n="founderName"></b>
+        <div class="role" data-i18n="founderRole"></div>
+        <p data-i18n="founderNote"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- URGENCIA -->
+  <div class="urg" data-i18n="urg"></div>
 
   <div class="formcard">
     <div class="formhead">
@@ -302,6 +382,16 @@
     </div>
   </div>
 
+  <!-- FAQ -->
+  <div class="sec faq">
+    <h3 class="sec-title" data-i18n="faqTitle"></h3>
+    <details><summary data-i18n="faqQ1"></summary><p data-i18n="faqA1"></p></details>
+    <details><summary data-i18n="faqQ2"></summary><p data-i18n="faqA2"></p></details>
+    <details><summary data-i18n="faqQ3"></summary><p data-i18n="faqA3"></p></details>
+    <details><summary data-i18n="faqQ4"></summary><p data-i18n="faqA4"></p></details>
+    <details><summary data-i18n="faqQ5"></summary><p data-i18n="faqA5"></p></details>
+  </div>
+
   <div class="foot">
     Vista Growth Agency · Phoenix, AZ
     <span class="pg" data-i18n="foot_pg"></span>
@@ -348,6 +438,24 @@
       hint_send:'Al enviar, se abrirá <b>WhatsApp</b> con tus respuestas listas para mandármelas. Reviso tu info y te confirmo. <b>No pagas nada hasta ver tu sitio terminado.</b>',
       back:'← Atrás', next:'Continuar →', send:'Enviar por WhatsApp',
       foot_pg:'🛡️ Formulario protegido por <b>Pixel Guard™</b>',
+      inclTitle:'Todo esto incluye tu sitio',
+      inclList:'<li>Diseño profesional a la medida</li><li>Optimizado para celular</li><li>Botón de WhatsApp directo</li><li>Sección de servicios y galería</li><li>Google Maps y horarios</li><li>Formulario de contacto</li><li>Pixel Guard™ anti-spam</li><li>Listo en 48 horas</li>',
+      howTitle:'Cómo funciona',
+      how1t:'Llenas el formulario', how1d:'2 minutos. Nos cuentas de tu negocio.',
+      how2t:'Construyo tu sitio', how2d:'Listo en 48 horas, hecho a tu medida.',
+      how3t:'Si te encanta, pagas', how3d:'¿No te gusta? No pagas nada. Sin riesgo.',
+      anchorTitle:'Por qué es una ganga',
+      anchorBadT:'Agencia tradicional', anchorBadP:'$1,500+', anchorBad1:'⏳ 2 a 3 semanas de espera', anchorBad2:'💸 Pago por adelantado',
+      anchorGoodT:'Vista Growth Agency', anchorGood1:'⚡ Listo en 48 horas', anchorGood2:'🛡️ Pagas después de verlo',
+      founderName:'Josué Garibay', founderRole:'Fundador · Vista Growth Agency',
+      founderNote:'No soy una agencia gigante con call center. Soy yo — y me importa que tu negocio se vea increíble. Hablas directo conmigo por WhatsApp, en español o inglés. Si no te encanta tu sitio, no me debes nada.',
+      urg:'⏳ Solo tomo 5 proyectos esta semana para entregar en 48h. Aparta el tuyo.',
+      faqTitle:'Preguntas frecuentes',
+      faqQ1:'¿Y si no me gusta el sitio?', faqA1:'No pagas nada. Solo pagas cuando lo ves terminado y te encanta. El riesgo es mío, no tuyo.',
+      faqQ2:'¿Cuánto tarda?', faqA2:'48 horas desde que recibo la información de tu negocio. Rápido y profesional.',
+      faqQ3:'¿Necesito tener un dominio?', faqA3:'No. Si no tienes, yo te ayudo a conseguirlo y a dejar todo funcionando.',
+      faqQ4:'¿Qué pasa después de pagar?', faqA4:'Publico tu sitio en tu dominio y queda 100% tuyo. También te ayudo con cualquier ajuste.',
+      faqQ5:'¿Hablas español?', faqA5:'¡Claro! Atención 100% bilingüe, español o inglés, lo que prefieras.',
       chips:{wa:'Mensajes por WhatsApp',calls:'Recibir llamadas',quote:'Solicitudes de presupuesto',portfolio:'Mostrar mis trabajos',clients:'Captar nuevos clientes',sell:'Vender productos'},
       fotos:{si:'Sí',no:'No'}, dominio:{si:'Sí',no:'Todavía no'}, logo:{si:'Sí',no:'No'},
       foto_val:{si:'Sí',no:'No, necesito ayuda'}, dom_val:{si:'Sí, ya tengo dominio',no:'No, todavía no'}, logo_val:{si:'Sí (lo envío por WhatsApp)',no:'No, lo diseñamos'},
@@ -382,6 +490,24 @@
       hint_send:'On submit, <b>WhatsApp</b> opens with your answers ready to send me. I review your info and confirm. <b>You pay nothing until you see your finished site.</b>',
       back:'← Back', next:'Continue →', send:'Send on WhatsApp',
       foot_pg:'🛡️ Form protected by <b>Pixel Guard™</b>',
+      inclTitle:'Everything your site includes',
+      inclList:'<li>Custom professional design</li><li>Mobile-optimized</li><li>Direct WhatsApp button</li><li>Services & gallery section</li><li>Google Maps & hours</li><li>Contact form</li><li>Pixel Guard™ anti-spam</li><li>Ready in 48 hours</li>',
+      howTitle:'How it works',
+      how1t:'You fill the form', how1d:'2 minutes. Tell us about your business.',
+      how2t:'I build your site', how2d:'Ready in 48 hours, made just for you.',
+      how3t:'If you love it, you pay', how3d:"Don't like it? You pay nothing. No risk.",
+      anchorTitle:"Why it's a steal",
+      anchorBadT:'Traditional agency', anchorBadP:'$1,500+', anchorBad1:'⏳ 2 to 3 weeks wait', anchorBad2:'💸 Paid upfront',
+      anchorGoodT:'Vista Growth Agency', anchorGood1:'⚡ Ready in 48 hours', anchorGood2:'🛡️ Pay after you see it',
+      founderName:'Josué Garibay', founderRole:'Founder · Vista Growth Agency',
+      founderNote:"I'm not a giant agency with a call center. It's me — and I care that your business looks amazing. You talk straight to me on WhatsApp, in English or Spanish. If you don't love your site, you owe me nothing.",
+      urg:'⏳ I only take 5 projects this week to deliver in 48h. Claim yours.',
+      faqTitle:'Frequently asked questions',
+      faqQ1:"What if I don't like the site?", faqA1:'You pay nothing. You only pay when you see it finished and love it. The risk is mine, not yours.',
+      faqQ2:'How long does it take?', faqA2:'48 hours from when I receive your business info. Fast and professional.',
+      faqQ3:'Do I need a domain?', faqA3:"No. If you don't have one, I help you get it and set everything up.",
+      faqQ4:'What happens after I pay?', faqA4:'I publish your site on your domain and it becomes 100% yours. I also help with any tweaks.',
+      faqQ5:'Do you speak Spanish?', faqA5:'Of course! Fully bilingual service, English or Spanish, whatever you prefer.',
       chips:{wa:'WhatsApp messages',calls:'Phone calls',quote:'Quote requests',portfolio:'Showcase my work',clients:'Get new clients',sell:'Sell products'},
       fotos:{si:'Yes',no:'No'}, dominio:{si:'Yes',no:'Not yet'}, logo:{si:'Yes',no:'No'},
       foto_val:{si:'Yes',no:'No, I need help'}, dom_val:{si:'Yes, I have a domain',no:'Not yet'}, logo_val:{si:"Yes (I'll send it on WhatsApp)",no:'No, design it for me'},
