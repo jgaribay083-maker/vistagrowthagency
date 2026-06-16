@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1080px;height:1350px;overflow:hidden;font-family:'Inter',sans-serif}
+  .ad{width:1080px;height:1350px;position:relative;overflow:hidden;background:#070707;color:#fff;display:flex;flex-direction:column;align-items:center;padding:70px 64px 54px;text-align:center}
+  .ad::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 75% 50% at 50% 0%, rgba(212,175,55,.15), transparent 58%),radial-gradient(ellipse 80% 50% at 50% 104%, rgba(37,211,102,.10), transparent 55%)}
+  .ad::after{content:'';position:absolute;inset:14px;border:1px solid rgba(212,175,55,.28);border-radius:26px;pointer-events:none}
+  .inner{position:relative;z-index:2;width:100%;display:flex;flex-direction:column;align-items:center;height:100%}
+  .logo{font-family:'Playfair Display',serif;font-weight:900;font-size:40px;letter-spacing:7px;color:#D4AF37;text-shadow:0 0 50px rgba(212,175,55,.4)}
+  .logo small{display:block;font-family:'Inter';font-weight:300;font-size:12px;letter-spacing:8px;color:#888;text-transform:uppercase;margin-top:6px}
+  .alert{margin-top:46px;font-size:22px;letter-spacing:4px;text-transform:uppercase;color:#ff6b6b;font-weight:700}
+  h1{font-family:'Playfair Display',serif;font-weight:800;font-size:82px;line-height:1.04;margin-top:18px;letter-spacing:-1px}
+  h1 .no{color:#D4AF37;font-style:italic}
+  .desc{font-size:27px;font-weight:300;color:#c4c4c4;line-height:1.5;margin-top:28px;max-width:760px}
+  .desc b{color:#fff;font-weight:600}
+  /* search mockup */
+  .search{margin-top:40px;width:720px;background:#141416;border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:22px 26px;display:flex;align-items:center;gap:18px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8)}
+  .search .mag{font-size:30px}
+  .search .q{flex:1;text-align:left;font-size:24px;color:#cfcfcf}
+  .search .q i{color:#666;font-style:normal}
+  .search .x{color:#ff6b6b;font-size:18px;font-weight:700;letter-spacing:1px;border:1px solid rgba(255,107,107,.4);padding:8px 14px;border-radius:8px;white-space:nowrap}
+  .solution{margin-top:auto;font-size:34px;font-weight:700;line-height:1.3;color:#fff}
+  .solution .g{color:#D4AF37}
+  .pricechip{margin-top:24px;display:inline-flex;align-items:baseline;gap:14px;border:1px solid rgba(212,175,55,.4);background:rgba(212,175,55,.07);border-radius:16px;padding:18px 34px}
+  .pricechip .p{font-family:'Playfair Display',serif;font-weight:900;font-size:74px;color:#D4AF37;line-height:1}
+  .pricechip .t{text-align:left;font-size:18px;color:#cfcfcf;text-transform:uppercase;letter-spacing:2px;line-height:1.3}
+  .pricechip .t b{color:#fff}
+  .cta{margin-top:28px;width:100%;background:linear-gradient(135deg,#1faa55,#25d366);border-radius:16px;display:flex;align-items:center;justify-content:center;gap:16px;padding:24px;box-shadow:0 24px 50px -22px rgba(37,211,102,.8)}
+  .cta svg{width:40px;height:40px;fill:#04230f}
+  .cta .txt{color:#04230f}
+  .cta .txt b{display:block;font-size:27px;font-weight:900;line-height:1}
+  .cta .txt span{font-size:16px;font-weight:600;opacity:.85}
+</style></head>
+<body>
+<div class="ad"><div class="inner">
+  <div class="logo">VGA<small>Vista Growth Agency</small></div>
+  <div class="alert">🚨 Atención, dueño de negocio</div>
+  <h1>¿Tu negocio sigue<br><span class="no">SIN</span> página web?</h1>
+  <div class="desc">Tus clientes te buscan en Google. Si no apareces, <b>le compran a tu competencia.</b></div>
+  <div class="search">
+    <span class="mag">🔍</span>
+    <span class="q">tu negocio cerca de mí <i>— sin resultados...</i></span>
+    <span class="x">SIN WEB</span>
+  </div>
+  <div class="solution">Te hacemos tu sitio <span class="g">en 48 horas</span>.</div>
+  <div class="pricechip"><span class="p">$197</span><span class="t">Pago<br><b>después</b> de entrega</span></div>
+  <div class="cta">
+    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043z"/></svg>
+    <div class="txt"><b>HABLEMOS AHORA</b><span>Mándanos WhatsApp hoy</span></div>
+  </div>
+</div></div>
+</body></html>

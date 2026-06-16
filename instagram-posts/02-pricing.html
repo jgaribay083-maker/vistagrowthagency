@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1080px; height: 1080px; overflow: hidden; }
+  .post {
+    width: 1080px; height: 1080px;
+    background: #0A0A0A;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    padding: 50px;
+  }
+  .post::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.06) 0%, transparent 60%);
+  }
+  .header {
+    text-align: center; position: relative; z-index: 1;
+    margin-bottom: 16px;
+  }
+  .tag {
+    font-size: 13px; color: #D4AF37;
+    text-transform: uppercase; letter-spacing: 4px;
+    font-weight: 600; margin-bottom: 12px;
+  }
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-size: 46px; font-weight: 700; color: #FFF;
+    line-height: 1.2;
+  }
+  .title span { color: #D4AF37; }
+  .subtitle { font-size: 15px; color: #888; margin-top: 8px; }
+  .packages {
+    display: flex; gap: 20px; position: relative;
+    z-index: 1; margin-top: 30px;
+  }
+  .package {
+    flex: 1;
+    background: #151515;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 30px 22px;
+    text-align: center;
+    position: relative;
+  }
+  .package.popular {
+    border-color: #D4AF37;
+    background: linear-gradient(180deg, rgba(212,175,55,0.08) 0%, #151515 40%);
+    transform: scale(1.03);
+  }
+  .popular-tag {
+    position: absolute; top: -14px; left: 50%;
+    transform: translateX(-50%);
+    background: #D4AF37; color: #0A0A0A;
+    font-size: 10px; font-weight: 700;
+    padding: 5px 16px; border-radius: 100px;
+    text-transform: uppercase; letter-spacing: 2px;
+  }
+  .pkg-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700;
+    color: #FFF; margin-bottom: 6px;
+    margin-top: 8px;
+  }
+  .pkg-desc {
+    font-size: 11px; color: #888;
+    margin-bottom: 16px; line-height: 1.4;
+    min-height: 30px;
+  }
+  .pkg-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px; font-weight: 700;
+    color: #D4AF37; margin-bottom: 4px;
+  }
+  .pkg-price span { font-size: 16px; color: #888; font-family: 'Inter'; }
+  .pkg-features {
+    list-style: none;
+    text-align: left;
+    margin-top: 18px;
+  }
+  .pkg-features li {
+    padding: 7px 0;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .pkg-features li.yes { color: #CCC; }
+  .pkg-features li.no { color: #444; }
+  .check { color: #D4AF37; font-weight: 700; font-size: 14px; }
+  .x { color: #444; font-size: 14px; }
+  .footer-note {
+    text-align: center; position: relative; z-index: 1;
+    margin-top: 24px;
+  }
+  .footer-note p {
+    font-size: 12px; color: #666; font-style: italic;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; color: #D4AF37;
+    letter-spacing: 3px; margin-top: 10px;
+  }
+  .dm-cta {
+    display: inline-block;
+    margin-top: 12px;
+    background: linear-gradient(135deg, #D4AF37, #B8960C);
+    color: #0A0A0A;
+    font-size: 13px; font-weight: 700;
+    padding: 10px 28px; border-radius: 8px;
+    letter-spacing: 1px;
+  }
+</style></head>
+<body>
+<div class="post">
+  <div class="header">
+    <div class="tag">Our Packages</div>
+    <div class="title">Transparent <span>Pricing</span></div>
+    <div class="subtitle">No hidden fees. No long-term contracts. Just results.</div>
+  </div>
+  <div class="packages">
+    <div class="package">
+      <div class="pkg-name">Starter</div>
+      <div class="pkg-desc">Ready to start advertising</div>
+      <div class="pkg-price">$497<span>/mo</span></div>
+      <ul class="pkg-features">
+        <li class="yes"><span class="check">&#10003;</span> Meta Ads management</li>
+        <li class="yes"><span class="check">&#10003;</span> 1 campaign</li>
+        <li class="yes"><span class="check">&#10003;</span> Audience research</li>
+        <li class="yes"><span class="check">&#10003;</span> Bi-weekly reports</li>
+        <li class="yes"><span class="check">&#10003;</span> Pixel Guard&trade;</li>
+        <li class="no"><span class="x">&mdash;</span> Content strategy</li>
+        <li class="no"><span class="x">&mdash;</span> Web design</li>
+      </ul>
+    </div>
+    <div class="package popular">
+      <div class="popular-tag">Most Popular</div>
+      <div class="pkg-name">Growth</div>
+      <div class="pkg-desc">Scale & dominate your market</div>
+      <div class="pkg-price">$997<span>/mo</span></div>
+      <ul class="pkg-features">
+        <li class="yes"><span class="check">&#10003;</span> Everything in Starter</li>
+        <li class="yes"><span class="check">&#10003;</span> Up to 3 campaigns</li>
+        <li class="yes"><span class="check">&#10003;</span> Content strategy</li>
+        <li class="yes"><span class="check">&#10003;</span> Weekly reports</li>
+        <li class="yes"><span class="check">&#10003;</span> Landing page design</li>
+        <li class="yes"><span class="check">&#10003;</span> A/B testing</li>
+        <li class="no"><span class="x">&mdash;</span> Full branding</li>
+      </ul>
+    </div>
+    <div class="package">
+      <div class="pkg-name">Premium</div>
+      <div class="pkg-desc">Full-service marketing</div>
+      <div class="pkg-price">$1,997<span>/mo</span></div>
+      <ul class="pkg-features">
+        <li class="yes"><span class="check">&#10003;</span> Everything in Growth</li>
+        <li class="yes"><span class="check">&#10003;</span> Unlimited campaigns</li>
+        <li class="yes"><span class="check">&#10003;</span> Full content creation</li>
+        <li class="yes"><span class="check">&#10003;</span> Website design</li>
+        <li class="yes"><span class="check">&#10003;</span> Brand management</li>
+        <li class="yes"><span class="check">&#10003;</span> Priority support</li>
+        <li class="yes"><span class="check">&#10003;</span> Strategy calls</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-note">
+    <div class="dm-cta">DM US FOR A FREE CONSULTATION</div>
+    <div class="footer-logo">VGA</div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1080px; height: 1080px; overflow: hidden; }
+  .post {
+    width: 1080px; height: 1080px;
+    background: #0A0A0A;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  .post::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(212,175,55,0.08) 0%, transparent 70%);
+  }
+  .post::after {
+    content: ''; position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    background: linear-gradient(135deg, #D4AF37 0%, transparent 30%, transparent 70%, #D4AF37 100%);
+    z-index: 0; opacity: 0.4;
+  }
+  .inner {
+    position: relative; z-index: 1;
+    width: 1040px; height: 1040px; margin: 20px;
+    background: #0A0A0A;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 60px;
+  }
+  .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 120px; font-weight: 800;
+    color: #D4AF37;
+    letter-spacing: 12px;
+    line-height: 1;
+    margin-bottom: 10px;
+    text-shadow: 0 0 60px rgba(212,175,55,0.3);
+  }
+  .agency-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px; font-weight: 300;
+    color: #999;
+    letter-spacing: 14px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+  }
+  .divider {
+    width: 120px; height: 2px;
+    background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+    margin-bottom: 50px;
+  }
+  .tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px; font-weight: 700;
+    color: #FFF; line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .tagline span { color: #D4AF37; }
+  .subtitle {
+    font-size: 20px; color: #888;
+    font-weight: 300; line-height: 1.6;
+    max-width: 650px; margin-bottom: 50px;
+  }
+  .badges {
+    display: flex; gap: 32px;
+    margin-bottom: 40px;
+  }
+  .badge {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 8px;
+  }
+  .badge-icon {
+    width: 50px; height: 50px;
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+  }
+  .badge span {
+    font-size: 11px; color: #999;
+    text-transform: uppercase; letter-spacing: 1px;
+    font-weight: 500;
+  }
+  .location {
+    font-size: 14px; color: #666;
+    letter-spacing: 3px; text-transform: uppercase;
+    position: absolute; bottom: 40px;
+  }
+</style></head>
+<body>
+<div class="post">
+  <div class="inner">
+    <div class="logo-text">VGA</div>
+    <div class="agency-name">Vista Growth Agency</div>
+    <div class="divider"></div>
+    <div class="tagline">We Don't Just Run Ads.<br><span>We Build Empires.</span></div>
+    <p class="subtitle">Premium digital marketing agency. Strategic Meta Ads, content creation, web design & brand management.</p>
+    <div class="badges">
+      <div class="badge">
+        <div class="badge-icon">&#x1F4CA;</div>
+        <span>Meta Ads</span>
+      </div>
+      <div class="badge">
+        <div class="badge-icon">&#x1F3AC;</div>
+        <span>Content</span>
+      </div>
+      <div class="badge">
+        <div class="badge-icon">&#x1F310;</div>
+        <span>Web Design</span>
+      </div>
+      <div class="badge">
+        <div class="badge-icon">&#x1F6E1;</div>
+        <span>Pixel Guard</span>
+      </div>
+    </div>
+    <div class="location">Phoenix, AZ &bull; English & Spanish</div>
+  </div>
+</div>
+</body></html>

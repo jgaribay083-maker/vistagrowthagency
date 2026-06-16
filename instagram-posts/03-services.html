@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1080px; height: 1080px; overflow: hidden; }
+  .post {
+    width: 1080px; height: 1080px;
+    background: #0A0A0A;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    padding: 60px;
+    display: flex; flex-direction: column;
+  }
+  .post::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(212,175,55,0.06) 0%, transparent 50%);
+  }
+  .header {
+    position: relative; z-index: 1;
+    margin-bottom: 40px;
+  }
+  .tag {
+    font-size: 13px; color: #D4AF37;
+    text-transform: uppercase; letter-spacing: 4px;
+    font-weight: 600; margin-bottom: 12px;
+  }
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-size: 50px; font-weight: 700; color: #FFF;
+    line-height: 1.15;
+  }
+  .title span { color: #D4AF37; }
+  .services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    flex: 1;
+    position: relative; z-index: 1;
+  }
+  .service {
+    background: #151515;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.3s;
+  }
+  .service:last-child {
+    border-color: rgba(212,175,55,0.3);
+    background: linear-gradient(135deg, #151515, rgba(212,175,55,0.06));
+    grid-column: 1 / -1;
+  }
+  .service-icon { font-size: 36px; margin-bottom: 12px; }
+  .service h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: #FFF;
+    margin-bottom: 8px;
+  }
+  .service p {
+    font-size: 13px; color: #888;
+    line-height: 1.5;
+  }
+  .exclusive-tag {
+    display: inline-block;
+    background: #D4AF37; color: #0A0A0A;
+    font-size: 9px; font-weight: 700;
+    padding: 3px 10px; border-radius: 100px;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+  .footer-bar {
+    display: flex; justify-content: space-between;
+    align-items: center;
+    margin-top: 24px; position: relative; z-index: 1;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; color: #D4AF37;
+    letter-spacing: 3px;
+  }
+  .footer-cta {
+    font-size: 13px; color: #999;
+    letter-spacing: 1px;
+  }
+  .footer-cta span { color: #D4AF37; font-weight: 600; }
+</style></head>
+<body>
+<div class="post">
+  <div class="header">
+    <div class="tag">What We Do</div>
+    <div class="title">Services That<br><span>Drive Growth</span></div>
+  </div>
+  <div class="services">
+    <div class="service">
+      <div class="service-icon">&#x1F4CA;</div>
+      <h3>Meta Ads</h3>
+      <p>Strategic Facebook & Instagram campaigns that target the right audience and maximize every dollar.</p>
+    </div>
+    <div class="service">
+      <div class="service-icon">&#x1F3AC;</div>
+      <h3>Content Strategy</h3>
+      <p>Scroll-stopping content plans that build your brand and convert followers into customers.</p>
+    </div>
+    <div class="service">
+      <div class="service-icon">&#x1F310;</div>
+      <h3>Web Design</h3>
+      <p>High-converting landing pages optimized for leads and sales. Mobile-first and beautiful.</p>
+    </div>
+    <div class="service">
+      <div class="service-icon">&#x1F48E;</div>
+      <h3>Brand Management</h3>
+      <p>Visual identity, brand voice, and cohesive presence that makes you stand out.</p>
+    </div>
+    <div class="service">
+      <span class="exclusive-tag">Exclusive Technology</span>
+      <div class="service-icon">&#x1F6E1;</div>
+      <h3>Pixel Guard&trade; — Lead Firewall</h3>
+      <p>Our proprietary anti-spam technology blocks bots and fake leads, protecting your ad budget. Included FREE with every plan.</p>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div class="footer-logo">VGA</div>
+    <div class="footer-cta">DM us <span>@vistagrowthagency</span></div>
+  </div>
+</div>
+</body></html>

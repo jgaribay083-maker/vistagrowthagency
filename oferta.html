@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sitio Web Profesional $197 · Vista Growth Agency</title>
+<meta name="description" content="Sitio web profesional para tu negocio por $197. Pagas solo cuando lo veas terminado. Listo en 48 horas. Phoenix, AZ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070707;--bg-soft:#0e0e0f;--panel:#121214;--panel-2:#16161a;
+    --line:rgba(212,175,55,.18);--line-soft:rgba(255,255,255,.07);
+    --gold:#D4AF37;--gold-soft:#e7cd72;--txt:#f5f5f4;--txt-dim:#9b9b9b;--txt-faint:#666;
+    --ok:#3ecf8e;--radius:16px;--maxw:680px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(ellipse 80% 50% at 50% -10%, rgba(212,175,55,.10), transparent 60%),radial-gradient(ellipse 60% 40% at 90% 110%, rgba(212,175,55,.05), transparent 60%)}
+  .wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 20px 120px}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:22px 4px 10px}
+  .brand{font-family:'Playfair Display',serif;font-weight:800;font-size:26px;letter-spacing:4px;color:var(--gold);text-shadow:0 0 30px rgba(212,175,55,.35)}
+  .brand small{display:block;font-family:'Inter';font-weight:300;font-size:9px;letter-spacing:5px;color:var(--txt-faint);text-transform:uppercase;margin-top:2px}
+  /* language switch */
+  .lang{display:inline-flex;border:1px solid var(--line-soft);border-radius:999px;overflow:hidden;background:var(--bg-soft)}
+  .lang button{font-family:inherit;font-size:12px;font-weight:600;letter-spacing:1px;padding:7px 13px;background:transparent;color:var(--txt-faint);border:0;cursor:pointer;transition:.2s}
+  .lang button.on{background:rgba(212,175,55,.14);color:var(--gold-soft)}
+
+  .hero{padding:30px 0 10px;text-align:center}
+  .eyebrow{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);border-radius:999px;padding:8px 16px;margin-bottom:26px;background:rgba(212,175,55,.05)}
+  .eyebrow span{color:var(--txt-faint)}
+  h1{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(34px,8vw,56px);line-height:1.05;letter-spacing:-.5px;margin-bottom:18px}
+  h1 .g{color:var(--gold)}
+  .sub{font-size:clamp(15px,3.6vw,18px);color:var(--txt-dim);font-weight:300;max-width:520px;margin:0 auto 30px}
+
+  .offer{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,var(--panel),#0c0c0e);padding:26px 24px;margin:0 auto 34px;max-width:440px;box-shadow:0 30px 80px -40px rgba(212,175,55,.4)}
+  .offer .price{font-family:'Playfair Display',serif;font-weight:900;font-size:64px;line-height:1;color:#fff}
+  .offer .price b{color:var(--gold);font-weight:900}
+  .offer .price .one{display:block;font-family:'Inter';font-weight:500;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:6px}
+  .offer .pay{font-size:13px;color:var(--txt-dim);margin-top:8px;letter-spacing:.3px}
+
+  .perks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 auto 36px;max-width:520px}
+  .perk{border:1px solid var(--line-soft);border-radius:12px;background:var(--bg-soft);padding:16px 8px;text-align:center}
+  .perk .ic{font-size:22px;margin-bottom:8px;display:block}
+  .perk b{display:block;font-size:12px;font-weight:600;letter-spacing:.3px;margin-bottom:3px}
+  .perk span{font-size:10px;color:var(--txt-faint);text-transform:uppercase;letter-spacing:1px}
+
+  .formcard{border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,var(--panel),#0b0b0d);overflow:hidden;box-shadow:0 40px 100px -50px rgba(0,0,0,.9)}
+  .formhead{padding:26px 26px 0}
+  .formhead .kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px}
+  .formhead h2{font-family:'Playfair Display',serif;font-weight:700;font-size:26px;line-height:1.15}
+  .formhead p{font-size:13px;color:var(--txt-dim);margin-top:8px;font-weight:300}
+
+  .progress{padding:20px 26px 4px}
+  .ptrack{height:5px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden}
+  .pfill{height:100%;width:16.6%;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold-soft));transition:width .5s cubic-bezier(.22,1,.36,1)}
+  .pmeta{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+  .pmeta .step{font-size:11px;letter-spacing:1px;color:var(--txt-faint);text-transform:uppercase}
+  .pmeta .step b{color:var(--gold)}
+  .dots{display:flex;gap:6px}
+  .dot{width:7px;height:7px;border-radius:99px;background:rgba(255,255,255,.12);transition:.3s}
+  .dot.on{background:var(--gold);box-shadow:0 0 10px rgba(212,175,55,.6)}
+  .dot.done{background:var(--gold-soft)}
+
+  form{padding:8px 26px 26px}
+  .step-panel{display:none;animation:fade .45s ease}
+  .step-panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+  .field{margin-bottom:20px}
+  .field:last-child{margin-bottom:0}
+  label.q{display:block;font-size:14px;font-weight:600;margin-bottom:9px;color:var(--txt)}
+  label.q .opt{font-weight:400;color:var(--txt-faint);font-size:12px}
+  input[type=text],input[type=email],input[type=tel],textarea{width:100%;background:var(--bg-soft);border:1px solid var(--line-soft);border-radius:12px;color:var(--txt);font-family:inherit;font-size:15px;padding:14px 15px;transition:border-color .2s,box-shadow .2s,background .2s;resize:vertical}
+  textarea{min-height:88px}
+  input::placeholder,textarea::placeholder{color:#5a5a5a}
+  input:focus,textarea:focus{outline:none;border-color:var(--gold);background:#0c0c0d;box-shadow:0 0 0 4px rgba(212,175,55,.10)}
+
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip{border:1px solid var(--line-soft);background:var(--bg-soft);color:var(--txt-dim);padding:11px 15px;border-radius:11px;font-size:13.5px;font-weight:500;cursor:pointer;transition:.18s;user-select:none}
+  .chip:hover{border-color:var(--line);color:var(--txt)}
+  .chip.sel{background:rgba(212,175,55,.12);border-color:var(--gold);color:var(--gold-soft);box-shadow:0 0 0 3px rgba(212,175,55,.08)}
+
+  .toggle{display:flex;gap:10px}
+  .toggle button{flex:1;border:1px solid var(--line-soft);background:var(--bg-soft);color:var(--txt-dim);padding:13px;border-radius:11px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:.18s}
+  .toggle button.sel{background:rgba(212,175,55,.12);border-color:var(--gold);color:var(--gold-soft)}
+
+  .pg-hp{position:absolute!important;left:-9999px!important;opacity:0;height:0;width:0;overflow:hidden}
+
+  .nav{display:flex;gap:12px;margin-top:26px}
+  .btn{font-family:inherit;font-weight:600;font-size:15px;border-radius:12px;cursor:pointer;padding:15px 20px;border:1px solid transparent;transition:.2s;letter-spacing:.2px}
+  .btn-back{background:transparent;border-color:var(--line-soft);color:var(--txt-dim);flex:0 0 auto;padding:15px 22px}
+  .btn-back:hover{border-color:var(--line);color:var(--txt)}
+  .btn-next{flex:1;background:linear-gradient(135deg,var(--gold),var(--gold-soft));color:#1a1500;box-shadow:0 16px 40px -16px rgba(212,175,55,.7)}
+  .btn-next:hover{transform:translateY(-1px);filter:brightness(1.05)}
+  .btn-next:active{transform:translateY(0)}
+  .btn-submit{flex:1;background:linear-gradient(135deg,#1faa55,#25d366);color:#04230f;box-shadow:0 16px 40px -16px rgba(37,211,102,.7);display:flex;align-items:center;justify-content:center;gap:9px}
+  .btn-submit:hover{transform:translateY(-1px);filter:brightness(1.05)}
+
+  .hint{font-size:11.5px;color:var(--txt-faint);margin-top:14px;text-align:center;line-height:1.5}
+  .hint b{color:var(--gold-soft);font-weight:600}
+  .hint.left{text-align:left;margin-top:9px}
+
+  .done-screen{display:none;text-align:center;padding:30px 10px 8px}
+  .done-screen.show{display:block;animation:fade .5s ease}
+  .done-screen .check{width:74px;height:74px;border-radius:99px;margin:0 auto 18px;display:grid;place-items:center;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.4);font-size:36px}
+  .done-screen h3{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:10px}
+  .done-screen p{color:var(--txt-dim);font-size:14px;max-width:380px;margin:0 auto 22px}
+  .done-screen a.wa{display:inline-flex;gap:9px;align-items:center;background:linear-gradient(135deg,#1faa55,#25d366);color:#04230f;font-weight:700;text-decoration:none;padding:14px 26px;border-radius:12px}
+
+  .foot{text-align:center;margin-top:30px;font-size:11px;color:var(--txt-faint);letter-spacing:.5px}
+  .foot .pg{display:block;margin-top:8px;color:var(--txt-dim)}
+  .foot .pg b{color:var(--gold-soft)}
+
+  .wa-float{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;align-items:center;gap:10px;text-decoration:none;background:linear-gradient(135deg,#1faa55,#25d366);color:#04230f;font-weight:700;font-size:14px;padding:13px 18px;border-radius:999px;box-shadow:0 14px 36px -10px rgba(37,211,102,.7);animation:pop .6s .8s both}
+  @keyframes pop{from{transform:scale(.7) translateY(20px);opacity:0}to{transform:none;opacity:1}}
+  .wa-float svg{width:20px;height:20px}
+
+  @media(max-width:480px){
+    .perks{gap:7px}.perk{padding:13px 4px}.perk .ic{font-size:19px}
+    .offer .price{font-size:54px}
+    form,.formhead,.progress{padding-left:18px;padding-right:18px}
+    .wa-float span{display:none}.wa-float{padding:14px;border-radius:99px}
+    .brand{font-size:22px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="brand">VGA<small>Vista Growth Agency</small></div>
+    <div class="lang" id="langSwitch">
+      <button type="button" data-lang="es" class="on">ES</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow" data-i18n="eyebrow"></div>
+    <h1 data-i18n="h1"></h1>
+    <p class="sub" data-i18n="sub"></p>
+
+    <div class="offer">
+      <div class="price"><span class="one" data-i18n="only"></span>$<b>197</b></div>
+      <div class="pay" data-i18n="pay"></div>
+    </div>
+
+    <div class="perks">
+      <div class="perk"><span class="ic">⚡</span><b data-i18n="perk1a"></b><span data-i18n="perk1b"></span></div>
+      <div class="perk"><span class="ic">🛡️</span><b data-i18n="perk2a"></b><span data-i18n="perk2b"></span></div>
+      <div class="perk"><span class="ic">📱</span><b data-i18n="perk3a"></b><span data-i18n="perk3b"></span></div>
+    </div>
+  </section>
+
+  <div class="formcard">
+    <div class="formhead">
+      <div class="kicker" data-i18n="kicker"></div>
+      <h2 data-i18n="formTitle"></h2>
+      <p data-i18n="formIntro"></p>
+    </div>
+
+    <div class="progress">
+      <div class="ptrack"><div class="pfill" id="pfill"></div></div>
+      <div class="pmeta">
+        <div class="step" id="stepLabel"></div>
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+
+    <form id="briefForm" novalidate>
+      <input type="text" class="pg-hp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <!-- STEP 1 -->
+      <div class="step-panel active" data-name="Empresa" data-name-en="Company">
+        <div class="field">
+          <label class="q" data-i18n="q_negocio"></label>
+          <input type="text" name="negocio" data-i18n-ph="ph_negocio">
+        </div>
+        <div class="field">
+          <label class="q" data-i18n="q_giro"></label>
+          <textarea name="giro" data-i18n-ph="ph_giro"></textarea>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-panel" data-name="Servicios" data-name-en="Services">
+        <div class="field">
+          <label class="q" data-i18n="q_serv"></label>
+          <textarea name="servicios" data-i18n-ph="ph_serv"></textarea>
+        </div>
+        <div class="field">
+          <label class="q" data-i18n="q_zonas"></label>
+          <input type="text" name="zonas" data-i18n-ph="ph_zonas">
+        </div>
+        <div class="field">
+          <label class="q" data-i18n="q_dif"></label>
+          <textarea name="diferenciador" data-i18n-ph="ph_dif"></textarea>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-panel" data-name="Objetivo" data-name-en="Goal">
+        <div class="field">
+          <label class="q" data-i18n="q_obj"></label>
+          <div class="chips" id="objChips">
+            <div class="chip" data-key="wa"></div>
+            <div class="chip" data-key="calls"></div>
+            <div class="chip" data-key="quote"></div>
+            <div class="chip" data-key="portfolio"></div>
+            <div class="chip" data-key="clients"></div>
+            <div class="chip" data-key="sell"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="q" data-i18n="q_fotos"></label>
+          <div class="toggle" data-toggle="fotos">
+            <button type="button" data-key="si"></button>
+            <button type="button" data-key="no"></button>
+          </div>
+        </div>
+        <div class="field">
+          <label class="q" data-i18n="q_ref"></label>
+          <input type="text" name="referencias" data-i18n-ph="ph_ref">
+        </div>
+        <div class="field">
+          <label class="q" data-i18n="q_must"></label>
+          <input type="text" name="obligatorio" data-i18n-ph="ph_must">
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-panel" data-name="Dominio" data-name-en="Domain">
+        <div class="field">
+          <label class="q" data-i18n="q_dom"></label>
+          <div class="toggle" data-toggle="dominio">
+            <button type="button" data-key="si"></button>
+            <button type="button" data-key="no"></button>
+          </div>
+        </div>
+        <div class="field" id="domNameField" style="display:none">
+          <label class="q" data-i18n="q_domurl"></label>
+          <input type="text" name="dominio_url" data-i18n-ph="ph_domurl">
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step-panel" data-name="Marca" data-name-en="Brand">
+        <div class="field">
+          <label class="q" data-i18n="q_logo"></label>
+          <div class="toggle" data-toggle="logo">
+            <button type="button" data-key="si"></button>
+            <button type="button" data-key="no"></button>
+          </div>
+          <p class="hint left" data-i18n="hint_logo"></p>
+        </div>
+        <div class="field">
+          <label class="q" data-i18n="q_colors"></label>
+          <input type="text" name="colores" data-i18n-ph="ph_colors">
+        </div>
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="step-panel" data-name="Contacto" data-name-en="Contact">
+        <div class="field">
+          <label class="q" data-i18n="q_name"></label>
+          <input type="text" name="nombre" data-i18n-ph="ph_name">
+        </div>
+        <div class="field">
+          <label class="q" data-i18n="q_phone"></label>
+          <input type="tel" name="telefono" data-i18n-ph="ph_phone">
+        </div>
+        <div class="field">
+          <label class="q" data-i18n="q_email"></label>
+          <input type="email" name="email" data-i18n-ph="ph_email">
+        </div>
+        <p class="hint" data-i18n="hint_send"></p>
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-back" id="backBtn" style="display:none" data-i18n="back"></button>
+        <button type="button" class="btn btn-next" id="nextBtn" data-i18n="next"></button>
+        <button type="submit" class="btn btn-submit" id="submitBtn" style="display:none">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043z"/></svg>
+          <span data-i18n="send"></span>
+        </button>
+      </div>
+    </form>
+
+    <div class="done-screen" id="doneScreen">
+      <div class="check">✓</div>
+      <h3 id="doneTitle"></h3>
+      <p id="donePara"></p>
+      <a class="wa" id="doneWa" href="#" target="_blank" rel="noopener"></a>
+    </div>
+  </div>
+
+  <div class="foot">
+    Vista Growth Agency · Phoenix, AZ
+    <span class="pg" data-i18n="foot_pg"></span>
+  </div>
+</div>
+
+<a class="wa-float" id="waFloat" target="_blank" rel="noopener" href="https://wa.me/16028217262">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script src="pixel-guard.js"></script>
+<script>
+(function(){
+  var WA = "16028217262"; // WhatsApp de VGA (+1 602 821 7262)
+
+  // ── Diccionario bilingüe ─────────────────────────────
+  var T = {
+    es:{
+      eyebrow:'Website Express <span>•</span> Entrega rápida <span>•</span> Diseño premium',
+      h1:'Tu sitio web<br><span class="g">profesional</span>, sin riesgo.',
+      sub:'Lo construimos primero. Tú decides después. Llena este formulario y empezamos hoy mismo.',
+      only:'Por solo', pay:'💳 Pago <b style="color:#fff">después</b> de la entrega · sin adelantos',
+      perk1a:'48 horas',perk1b:'Rápido',perk2a:'Pago después',perk2b:'Sin riesgo',perk3a:'Responsivo',perk3b:'Móvil + PC',
+      kicker:'Empecemos', formTitle:'Vamos a crear tu sitio web',
+      formIntro:'Si no sabes alguna respuesta, déjala en blanco — nosotros nos encargamos de la estrategia, los textos y el diseño.',
+      stepWord:'Paso', ofWord:'de',
+      q_negocio:'¿Cómo se llama tu negocio?', ph_negocio:'Ej. Tacos El Güero, Salón Bella, Taller Ramírez...',
+      q_giro:'¿A qué se dedica tu empresa?', ph_giro:'Explica en pocas palabras a qué se dedica tu negocio.',
+      q_serv:'¿Qué servicios o productos ofreces?', ph_serv:'Ej. limpieza, reformas, comida para llevar, cortes de cabello...',
+      q_zonas:'¿Qué ciudades o zonas atiendes?', ph_zonas:'Ej. Phoenix, Mesa, Tempe, Chandler...',
+      q_dif:'¿Por qué un cliente debería elegirte? <span class="opt">(tu diferencia)</span>', ph_dif:'Experiencia, calidad, precio, garantía, atención...',
+      q_obj:'¿Cuál es el objetivo del sitio? <span class="opt">(elige los que quieras)</span>',
+      q_fotos:'¿Tienes fotos o videos de tu negocio?',
+      q_ref:'¿Hay algún sitio que te guste? <span class="opt">(opcional)</span>', ph_ref:'Pega 1 o 2 enlaces de sitios que te gusten.',
+      q_must:'¿Algo que obligatoriamente deba aparecer? <span class="opt">(opcional)</span>', ph_must:'Menú, horarios, promoción, redes, etc.',
+      q_dom:'¿Ya tienes un dominio? <span class="opt">(la dirección .com)</span>',
+      q_domurl:'¿Cuál es tu dominio?', ph_domurl:'Ej. minegocio.com',
+      q_logo:'¿Ya tienes un logo?', hint_logo:'Si tienes logo, nos lo envías por WhatsApp después — aquí solo lo marcas.',
+      q_colors:'¿Colores o estilo de tu marca? <span class="opt">(opcional)</span>', ph_colors:'Ej. azul y blanco, elegante, moderno, colorido...',
+      q_name:'Tu nombre', ph_name:'¿Cómo te llamas?',
+      q_phone:'Tu WhatsApp / teléfono', ph_phone:'(602) 000-0000',
+      q_email:'Tu correo electrónico', ph_email:'tucorreo@ejemplo.com',
+      hint_send:'Al enviar, se abrirá <b>WhatsApp</b> con tus respuestas listas para mandármelas. Reviso tu info y te confirmo. <b>No pagas nada hasta ver tu sitio terminado.</b>',
+      back:'← Atrás', next:'Continuar →', send:'Enviar por WhatsApp',
+      foot_pg:'🛡️ Formulario protegido por <b>Pixel Guard™</b>',
+      chips:{wa:'Mensajes por WhatsApp',calls:'Recibir llamadas',quote:'Solicitudes de presupuesto',portfolio:'Mostrar mis trabajos',clients:'Captar nuevos clientes',sell:'Vender productos'},
+      fotos:{si:'Sí',no:'No'}, dominio:{si:'Sí',no:'Todavía no'}, logo:{si:'Sí',no:'No'},
+      foto_val:{si:'Sí',no:'No, necesito ayuda'}, dom_val:{si:'Sí, ya tengo dominio',no:'No, todavía no'}, logo_val:{si:'Sí (lo envío por WhatsApp)',no:'No, lo diseñamos'},
+      doneTitle:'¡Listo, {n}!', donePara:'Se abrió WhatsApp con tu información. Si no se abrió, dale al botón:', doneBtn:'📲 Abrir WhatsApp',
+      msg:{head:'¡Hola VGA! 🚀 Quiero mi sitio web de $197 (pago después de la entrega).',emp:'🏢 *EMPRESA*',neg:'Negocio',giro:'Giro',serv:'🛠️ *SERVICIOS*',ofr:'Ofrece',zon:'Zonas',dif:'Diferencia',obj:'🎯 *OBJETIVO*',met:'Metas',fv:'Fotos/videos',ref:'Referencias',must:'Obligatorio',dom:'🌐 *DOMINIO*',mar:'🎨 *MARCA*',logo:'Logo',col:'Colores',con:'🙋 *CONTACTO*',nom:'Nombre',tel:'Tel',mail:'Email',none:'—'}
+    },
+    en:{
+      eyebrow:'Website Express <span>•</span> Fast delivery <span>•</span> Premium design',
+      h1:'Your professional<br><span class="g">website</span>, risk-free.',
+      sub:'We build it first. You decide after. Fill out this form and we start today.',
+      only:'Only', pay:'💳 Pay <b style="color:#fff">after</b> delivery · no upfront cost',
+      perk1a:'48 hours',perk1b:'Fast',perk2a:'Pay after',perk2b:'No risk',perk3a:'Responsive',perk3b:'Mobile + PC',
+      kicker:"Let's start", formTitle:"Let's build your website",
+      formIntro:"If you don't know an answer, leave it blank — we handle the strategy, the copy and the design.",
+      stepWord:'Step', ofWord:'of',
+      q_negocio:"What's your business name?", ph_negocio:'e.g. The Corner Café, Bella Salon, Ramirez Auto...',
+      q_giro:'What does your business do?', ph_giro:'Briefly explain what your business does.',
+      q_serv:'What services or products do you offer?', ph_serv:'e.g. cleaning, remodeling, takeout food, haircuts...',
+      q_zonas:'What cities or areas do you serve?', ph_zonas:'e.g. Phoenix, Mesa, Tempe, Chandler...',
+      q_dif:'Why should a customer choose you? <span class="opt">(your edge)</span>', ph_dif:'Experience, quality, price, warranty, service...',
+      q_obj:"What's the goal of the site? <span class=\"opt\">(pick any)</span>",
+      q_fotos:'Do you have photos or videos of your business?',
+      q_ref:'Any website you like? <span class="opt">(optional)</span>', ph_ref:'Paste 1 or 2 links of sites you like.',
+      q_must:'Anything that must be on the site? <span class="opt">(optional)</span>', ph_must:'Menu, hours, promo, social links, etc.',
+      q_dom:'Do you already have a domain? <span class="opt">(the .com address)</span>',
+      q_domurl:"What's your domain?", ph_domurl:'e.g. mybusiness.com',
+      q_logo:'Do you already have a logo?', hint_logo:"If you have a logo, you'll send it on WhatsApp later — just mark it here.",
+      q_colors:'Brand colors or style? <span class="opt">(optional)</span>', ph_colors:'e.g. blue and white, elegant, modern, colorful...',
+      q_name:'Your name', ph_name:"What's your name?",
+      q_phone:'Your WhatsApp / phone', ph_phone:'(602) 000-0000',
+      q_email:'Your email', ph_email:'you@example.com',
+      hint_send:'On submit, <b>WhatsApp</b> opens with your answers ready to send me. I review your info and confirm. <b>You pay nothing until you see your finished site.</b>',
+      back:'← Back', next:'Continue →', send:'Send on WhatsApp',
+      foot_pg:'🛡️ Form protected by <b>Pixel Guard™</b>',
+      chips:{wa:'WhatsApp messages',calls:'Phone calls',quote:'Quote requests',portfolio:'Showcase my work',clients:'Get new clients',sell:'Sell products'},
+      fotos:{si:'Yes',no:'No'}, dominio:{si:'Yes',no:'Not yet'}, logo:{si:'Yes',no:'No'},
+      foto_val:{si:'Yes',no:'No, I need help'}, dom_val:{si:'Yes, I have a domain',no:'Not yet'}, logo_val:{si:"Yes (I'll send it on WhatsApp)",no:'No, design it for me'},
+      doneTitle:'Done, {n}!', donePara:"WhatsApp opened with your info. If it didn't, tap the button:", doneBtn:'📲 Open WhatsApp',
+      msg:{head:'Hi VGA! 🚀 I want my $197 website (pay after delivery).',emp:'🏢 *BUSINESS*',neg:'Business',giro:'Type',serv:'🛠️ *SERVICES*',ofr:'Offers',zon:'Areas',dif:'Edge',obj:'🎯 *GOAL*',met:'Goals',fv:'Photos/videos',ref:'References',must:'Must-have',dom:'🌐 *DOMAIN*',mar:'🎨 *BRAND*',logo:'Logo',col:'Colors',con:'🙋 *CONTACT*',nom:'Name',tel:'Phone',mail:'Email',none:'—'}
+    }
+  };
+
+  var lang = 'es';
+  var panels   = Array.prototype.slice.call(document.querySelectorAll('.step-panel'));
+  var total    = panels.length;
+  var cur      = 0;
+  var pfill    = document.getElementById('pfill');
+  var stepLabel= document.getElementById('stepLabel');
+  var dots     = document.getElementById('dots');
+  var backBtn  = document.getElementById('backBtn');
+  var nextBtn  = document.getElementById('nextBtn');
+  var submitBtn= document.getElementById('submitBtn');
+  var form     = document.getElementById('briefForm');
+
+  for(var i=0;i<total;i++){var d=document.createElement('div');d.className='dot';dots.appendChild(d);}
+  var dotEls = Array.prototype.slice.call(dots.children);
+
+  var sel = { objetivos:[], fotos:'', dominio:'', logo:'' };
+
+  // chips (multi) — guardan KEY estable
+  document.querySelectorAll('#objChips .chip').forEach(function(c){
+    c.addEventListener('click',function(){
+      c.classList.toggle('sel');
+      var k=c.getAttribute('data-key');
+      var idx=sel.objetivos.indexOf(k);
+      if(idx>-1)sel.objetivos.splice(idx,1); else sel.objetivos.push(k);
+    });
+  });
+
+  // toggles (single) — guardan KEY 'si'/'no'
+  document.querySelectorAll('[data-toggle]').forEach(function(t){
+    var group=t.getAttribute('data-toggle');
+    t.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click',function(){
+        t.querySelectorAll('button').forEach(function(x){x.classList.remove('sel');});
+        b.classList.add('sel');
+        sel[group]=b.getAttribute('data-key');
+        if(group==='dominio'){
+          document.getElementById('domNameField').style.display = (b.getAttribute('data-key')==='si')?'block':'none';
+        }
+      });
+    });
+  });
+
+  function applyLang(L){
+    lang=L; var t=T[L];
+    document.documentElement.lang=L;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var v=t[el.getAttribute('data-i18n')]; if(v!=null) el.innerHTML=v;
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+      var v=t[el.getAttribute('data-i18n-ph')]; if(v!=null) el.placeholder=v;
+    });
+    // chips + toggles
+    document.querySelectorAll('#objChips .chip').forEach(function(c){ c.textContent=t.chips[c.getAttribute('data-key')]; });
+    document.querySelectorAll('[data-toggle="fotos"] button').forEach(function(b){ b.textContent=t.fotos[b.getAttribute('data-key')]; });
+    document.querySelectorAll('[data-toggle="dominio"] button').forEach(function(b){ b.textContent=t.dominio[b.getAttribute('data-key')]; });
+    document.querySelectorAll('[data-toggle="logo"] button').forEach(function(b){ b.textContent=t.logo[b.getAttribute('data-key')]; });
+    document.querySelectorAll('#langSwitch button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-lang')===L); });
+    render();
+  }
+
+  document.querySelectorAll('#langSwitch button').forEach(function(b){
+    b.addEventListener('click',function(){ applyLang(b.getAttribute('data-lang')); });
+  });
+
+  function render(){
+    var t=T[lang];
+    panels.forEach(function(p,i){p.classList.toggle('active',i===cur);});
+    pfill.style.width = (((cur+1)/total)*100)+'%';
+    var name = lang==='es'? panels[cur].getAttribute('data-name') : panels[cur].getAttribute('data-name-en');
+    stepLabel.innerHTML = t.stepWord+' <b>'+(cur+1)+'</b> '+t.ofWord+' '+total+' · '+name;
+    dotEls.forEach(function(d,i){ d.classList.toggle('on',i===cur); d.classList.toggle('done',i<cur); });
+    backBtn.style.display = cur===0 ? 'none':'block';
+    var last = cur===total-1;
+    nextBtn.style.display   = last ? 'none':'block';
+    submitBtn.style.display = last ? 'flex':'none';
+    var card=document.querySelector('.formcard'); if(card) card.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  nextBtn.addEventListener('click',function(){ if(cur<total-1){cur++;render();} });
+  backBtn.addEventListener('click',function(){ if(cur>0){cur--;render();} });
+
+  function val(name){var el=form.querySelector('[name="'+name+'"]');return el?el.value.trim():'';}
+
+  function buildMessage(){
+    var t=T[lang], m=t.msg, none=m.none, L=[];
+    L.push(m.head); L.push('');
+    L.push(m.emp);
+    L.push('• '+m.neg+': '+(val('negocio')||none));
+    L.push('• '+m.giro+': '+(val('giro')||none)); L.push('');
+    L.push(m.serv);
+    L.push('• '+m.ofr+': '+(val('servicios')||none));
+    L.push('• '+m.zon+': '+(val('zonas')||none));
+    L.push('• '+m.dif+': '+(val('diferenciador')||none)); L.push('');
+    L.push(m.obj);
+    var metas = sel.objetivos.map(function(k){return t.chips[k];});
+    L.push('• '+m.met+': '+(metas.length?metas.join(', '):none));
+    L.push('• '+m.fv+': '+(sel.fotos?t.foto_val[sel.fotos]:none));
+    if(val('referencias')) L.push('• '+m.ref+': '+val('referencias'));
+    if(val('obligatorio')) L.push('• '+m.must+': '+val('obligatorio')); L.push('');
+    L.push(m.dom+': '+(sel.dominio?t.dom_val[sel.dominio]:none)+(val('dominio_url')?(' ('+val('dominio_url')+')'):''));
+    L.push(m.mar+': '+m.logo+' '+(sel.logo?t.logo_val[sel.logo]:none)+(val('colores')?(' · '+m.col+': '+val('colores')):'')); L.push('');
+    L.push(m.con);
+    L.push('• '+m.nom+': '+(val('nombre')||none));
+    L.push('• '+m.tel+': '+(val('telefono')||none));
+    L.push('• '+m.mail+': '+(val('email')||none));
+    return L.join('\n');
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var t=T[lang];
+    var url='https://wa.me/'+WA+'?text='+encodeURIComponent(buildMessage());
+    if(window.fbq){ try{ fbq('track','Lead'); }catch(_){} }
+    document.getElementById('doneTitle').textContent = t.doneTitle.replace('{n}', val('nombre') || (lang==='es'?'crack':'champ'));
+    document.getElementById('donePara').textContent = t.donePara;
+    var wa=document.getElementById('doneWa'); wa.setAttribute('href',url); wa.textContent=t.doneBtn;
+    form.style.display='none';
+    document.querySelector('.progress').style.display='none';
+    document.getElementById('doneScreen').classList.add('show');
+    window.open(url,'_blank');
+  });
+
+  // Idioma inicial: ?lang=en/es manda; si no, detecta el del navegador.
+  var paramLang=(location.search.match(/[?&]lang=(en|es)/)||[])[1];
+  var startLang=paramLang || ((navigator.language||'').toLowerCase().indexOf('en')===0?'en':'es');
+  applyLang(startLang);
+})();
+</script>
+</body>
+</html>

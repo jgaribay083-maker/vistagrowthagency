@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1080px; height: 1080px; overflow: hidden; }
+  .post {
+    width: 1080px; height: 1080px;
+    background: #0A0A0A;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    padding: 60px;
+    display: flex; flex-direction: column;
+  }
+  .post::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 20%, rgba(212,175,55,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(212,175,55,0.04) 0%, transparent 40%);
+  }
+
+  /* Header */
+  .header {
+    position: relative; z-index: 1;
+    margin-bottom: 36px;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 12px; color: #0A0A0A;
+    background: #D4AF37;
+    padding: 6px 16px; border-radius: 100px;
+    text-transform: uppercase; letter-spacing: 3px;
+    font-weight: 700; margin-bottom: 16px;
+  }
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; font-weight: 700; color: #FFF;
+    line-height: 1.15;
+  }
+  .title span { color: #D4AF37; }
+  .client-name {
+    font-size: 16px; color: #888;
+    margin-top: 8px; letter-spacing: 1px;
+  }
+  .client-name strong { color: #D4AF37; font-weight: 600; }
+
+  /* Stats Grid */
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    position: relative; z-index: 1;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: #131313;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 28px;
+    text-align: center;
+  }
+  .stat-card.highlight {
+    border-color: rgba(212,175,55,0.3);
+    background: linear-gradient(135deg, #131313, rgba(212,175,55,0.06));
+  }
+  .stat-icon { font-size: 32px; margin-bottom: 10px; }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px; font-weight: 800;
+    color: #D4AF37;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 13px; color: #999;
+    text-transform: uppercase; letter-spacing: 2px;
+    font-weight: 500;
+  }
+  .stat-detail {
+    font-size: 11px; color: #666;
+    margin-top: 4px;
+  }
+
+  /* Services Used */
+  .services-used {
+    position: relative; z-index: 1;
+    background: #131313;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 24px 32px;
+    display: flex; align-items: center;
+    gap: 24px; margin-bottom: 28px;
+  }
+  .services-label {
+    font-size: 11px; color: #666;
+    text-transform: uppercase; letter-spacing: 2px;
+    white-space: nowrap;
+  }
+  .service-tags {
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+  .service-tag {
+    padding: 6px 14px;
+    border: 1px solid rgba(212,175,55,0.25);
+    border-radius: 100px;
+    font-size: 12px; color: #D4AF37;
+    font-weight: 500; letter-spacing: 0.5px;
+  }
+
+  /* Testimonial */
+  .testimonial {
+    position: relative; z-index: 1;
+    flex: 1;
+    display: flex; flex-direction: column;
+    justify-content: center;
+  }
+  .quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: #DDD;
+    font-style: italic; line-height: 1.5;
+    padding-left: 24px;
+    border-left: 3px solid #D4AF37;
+    margin-bottom: 12px;
+  }
+  .quote-author {
+    font-size: 13px; color: #888;
+    padding-left: 28px;
+  }
+  .quote-author strong { color: #D4AF37; }
+
+  /* Footer */
+  .footer-bar {
+    display: flex; justify-content: space-between;
+    align-items: center;
+    position: relative; z-index: 1;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top: auto;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; color: #D4AF37;
+    letter-spacing: 3px;
+  }
+  .footer-cta {
+    font-size: 14px; color: #FFF;
+    background: linear-gradient(135deg, #D4AF37, #B8960C);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    font-weight: 600; letter-spacing: 1px;
+  }
+</style></head>
+<body>
+<div class="post">
+  <div class="header">
+    <div class="tag">Case Study</div>
+    <div class="title">Real Results.<br><span>Real Growth.</span></div>
+    <div class="client-name">Client: <strong>shopwithrossy.com</strong> &mdash; Fashion Boutique, Mexico</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card highlight">
+      <div class="stat-icon">&#x1F4C8;</div>
+      <div class="stat-number">3x</div>
+      <div class="stat-label">Follower Growth</div>
+      <div class="stat-detail">Instagram organic + paid</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">&#x1F3AF;</div>
+      <div class="stat-number">$0.08</div>
+      <div class="stat-label">Cost Per Follow</div>
+      <div class="stat-detail">Below industry average</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">&#x1F6E1;</div>
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Bot-Free Leads</div>
+      <div class="stat-detail">Protected by Pixel Guard&trade;</div>
+    </div>
+    <div class="stat-card highlight">
+      <div class="stat-icon">&#x1F310;</div>
+      <div class="stat-number">24hr</div>
+      <div class="stat-label">Website Launch</div>
+      <div class="stat-detail">Designed, built & deployed</div>
+    </div>
+  </div>
+
+  <div class="services-used">
+    <div class="services-label">Services Used</div>
+    <div class="service-tags">
+      <div class="service-tag">Meta Ads</div>
+      <div class="service-tag">Content Strategy</div>
+      <div class="service-tag">Web Design</div>
+      <div class="service-tag">Pixel Guard&trade;</div>
+    </div>
+  </div>
+
+  <div class="testimonial">
+    <div class="quote">"They built my entire online presence from scratch &mdash; website, ads, and content strategy. Game changer for my boutique!"</div>
+    <div class="quote-author">&mdash; <strong>Rossy</strong>, Owner of Shopwithrossy</div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="footer-logo">VGA</div>
+    <div class="footer-cta">Your business could be next &rarr;</div>
+  </div>
+</div>
+</body></html>
