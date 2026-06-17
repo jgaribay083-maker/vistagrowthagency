@@ -49,6 +49,28 @@
   .perk b{display:block;font-size:12px;font-weight:600;letter-spacing:.3px;margin-bottom:3px}
   .perk span{font-size:10px;color:var(--txt-faint);text-transform:uppercase;letter-spacing:1px}
 
+  /* Vista Previa: ventana de navegador con mini-sitio (hecho a mano, editable) */
+  .pv-label{text-align:center;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:600;margin:6px 0 14px}
+  .preview{max-width:540px;margin:0 auto 6px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0b0b0d;box-shadow:0 40px 90px -42px rgba(0,0,0,.92),0 0 60px -28px rgba(212,175,55,.35);animation:pvFloat 6s ease-in-out infinite}
+  @keyframes pvFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  .pv-bar{display:flex;align-items:center;gap:7px;padding:10px 13px;background:#141416;border-bottom:1px solid var(--line-soft)}
+  .pv-bar .d{width:9px;height:9px;border-radius:50%;background:#3a3a3d}
+  .pv-bar .d.r{background:#ff5f57}.pv-bar .d.y{background:#febc2e}.pv-bar .d.g{background:#28c840}
+  .pv-url{margin-left:8px;flex:1;height:19px;border-radius:6px;background:#09090b;border:1px solid var(--line-soft);display:flex;align-items:center;padding:0 11px;font-size:9.5px;color:var(--txt-faint);letter-spacing:.5px}
+  .pv-body{padding:16px 16px 18px;background:radial-gradient(120% 80% at 50% 0%,rgba(212,175,55,.09),transparent 60%),#09090b}
+  .pv-nav{display:flex;align-items:center;gap:7px;margin-bottom:14px}
+  .pv-nav .lg{font-family:'Playfair Display',serif;font-weight:800;font-size:12px;color:var(--gold);letter-spacing:1px}
+  .pv-nav .sp{flex:1}
+  .pv-nav i{width:24px;height:5px;border-radius:3px;background:rgba(255,255,255,.13)}
+  .pv-hero{text-align:center;padding:8px 0 16px}
+  .pv-hero .l{height:10px;border-radius:5px;margin:0 auto 8px;background:linear-gradient(90deg,#fff,rgba(255,255,255,.55));width:72%}
+  .pv-hero .l.g{background:linear-gradient(90deg,var(--gold),var(--gold-soft));width:56%}
+  .pv-hero .l.s{width:42%;height:6px;background:rgba(255,255,255,.22)}
+  .pv-hero .b{width:96px;height:23px;border-radius:7px;margin:13px auto 0;background:linear-gradient(135deg,var(--gold),var(--gold-soft));box-shadow:0 8px 20px -8px rgba(212,175,55,.6)}
+  .pv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .pv-cards span{height:48px;border-radius:8px;background:#121214;border:1px solid var(--line-soft);display:block;position:relative}
+  .pv-cards span::before{content:'';position:absolute;top:9px;left:9px;width:15px;height:15px;border-radius:4px;background:rgba(212,175,55,.45)}
+
   .formcard{border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,var(--panel),#0b0b0d);overflow:hidden;box-shadow:0 40px 100px -50px rgba(0,0,0,.9)}
   .formhead{padding:26px 26px 0}
   .formhead .kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px}
@@ -194,6 +216,16 @@
       <div class="perk"><span class="ic">⚡</span><b data-i18n="perk1a"></b><span data-i18n="perk1b"></span></div>
       <div class="perk"><span class="ic">🛡️</span><b data-i18n="perk2a"></b><span data-i18n="perk2b"></span></div>
       <div class="perk"><span class="ic">📱</span><b data-i18n="perk3a"></b><span data-i18n="perk3b"></span></div>
+    </div>
+
+    <div class="pv-label" data-i18n="pvLabel"></div>
+    <div class="preview" aria-hidden="true">
+      <div class="pv-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><div class="pv-url">tunegocio.com</div></div>
+      <div class="pv-body">
+        <div class="pv-nav"><span class="lg">VGA</span><span class="sp"></span><i></i><i></i><i></i></div>
+        <div class="pv-hero"><div class="l"></div><div class="l g"></div><div class="l s"></div><div class="b"></div></div>
+        <div class="pv-cards"><span></span><span></span><span></span></div>
+      </div>
     </div>
   </section>
 
@@ -438,6 +470,7 @@
       hint_send:'Al enviar, se abrirá <b>WhatsApp</b> con tus respuestas listas para mandármelas. Reviso tu info y te confirmo. <b>No pagas nada hasta ver tu sitio terminado.</b>',
       back:'← Atrás', next:'Continuar →', send:'Enviar por WhatsApp',
       foot_pg:'🛡️ Formulario protegido por <b>Pixel Guard™</b>',
+      pvLabel:'Una probada de lo que recibes',
       inclTitle:'Todo esto incluye tu sitio',
       inclList:'<li>Diseño profesional a la medida</li><li>Optimizado para celular</li><li>Botón de WhatsApp directo</li><li>Sección de servicios y galería</li><li>Google Maps y horarios</li><li>Formulario de contacto</li><li>Pixel Guard™ anti-spam</li><li>Listo en 48 horas</li>',
       howTitle:'Cómo funciona',
@@ -490,6 +523,7 @@
       hint_send:'On submit, <b>WhatsApp</b> opens with your answers ready to send me. I review your info and confirm. <b>You pay nothing until you see your finished site.</b>',
       back:'← Back', next:'Continue →', send:'Send on WhatsApp',
       foot_pg:'🛡️ Form protected by <b>Pixel Guard™</b>',
+      pvLabel:'A taste of what you get',
       inclTitle:'Everything your site includes',
       inclList:'<li>Custom professional design</li><li>Mobile-optimized</li><li>Direct WhatsApp button</li><li>Services & gallery section</li><li>Google Maps & hours</li><li>Contact form</li><li>Pixel Guard™ anti-spam</li><li>Ready in 48 hours</li>',
       howTitle:'How it works',
