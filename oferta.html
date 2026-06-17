@@ -674,7 +674,9 @@
 
   // Idioma inicial: ?lang=en/es manda; si no, detecta el del navegador.
   var paramLang=(location.search.match(/[?&]lang=(en|es)/)||[])[1];
-  var startLang=paramLang || ((navigator.language||'').toLowerCase().indexOf('en')===0?'en':'es');
+  // Default INGLES (mercado USA). Si el navegador del visitante esta en espanol,
+  // se lo mostramos en espanol automatico. El parametro ?lang= manda sobre todo.
+  var startLang=paramLang || ((navigator.language||'').toLowerCase().indexOf('es')===0?'es':'en');
   applyLang(startLang);
 })();
 </script>
