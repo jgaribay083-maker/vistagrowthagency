@@ -73,7 +73,6 @@ header.hero .sub{font-size:clamp(16px,2.4vw,20px);color:var(--dim);font-weight:3
 .hero-fx{position:absolute;inset:0;z-index:1;pointer-events:none}
 .hero-beam{position:absolute;left:50%;top:40%;width:min(880px,92%);height:360px;transform:translate(-50%,-50%);z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,rgba(226,190,90,.38),rgba(212,175,55,.14) 45%,transparent 66%);filter:blur(22px);animation:beam 8s ease-in-out infinite}
 @keyframes beam{0%,100%{transform:translate(-80%,-50%)}50%{transform:translate(-20%,-50%)}}
-@media(prefers-reduced-motion:reduce){.hero-beam{animation:none}}
 .hero-shade{position:absolute;inset:0;z-index:1;background:
   linear-gradient(180deg,rgba(5,5,8,.70) 0%,rgba(5,5,8,.42) 36%,rgba(5,5,8,.72) 74%,var(--bg) 100%),
   radial-gradient(120% 80% at 50% 40%,transparent 40%,rgba(5,5,8,.5))}
@@ -90,7 +89,6 @@ html.js .hero-inner .eyebrow{opacity:0;animation:heroUp .7s ease forwards;animat
 html.js .hero-inner .sub{opacity:0;animation:heroUp .7s ease forwards;animation-delay:.6s}
 html.js .hero-inner .hero-cta{opacity:0;animation:heroUp .7s ease forwards;animation-delay:.78s}
 html.js .hero-inner .hero-stats{opacity:0;animation:heroUp .7s ease forwards;animation-delay:.95s}
-@media(prefers-reduced-motion:reduce){html.js .hero-inner *{animation:none!important;opacity:1!important;transform:none!important}}
 
 /* trust strip */
 .trust{position:relative;z-index:2;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:rgba(255,255,255,.012);padding:22px 0;margin-top:50px}
@@ -526,10 +524,9 @@ html.js .reveal.in{opacity:1;transform:none}
 })();
 
 // HERO FX: A) particulas doradas flotando  B) luces de ciudad parpadeando
-var _reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
 (function(){
   var hero=document.querySelector('header.hero'), cv=document.querySelector('.hero-fx');
-  if(!hero||!cv||_reduce) return;
+  if(!hero||!cv) return;
   var ctx=cv.getContext('2d'), W=0,H=0, parts=[], twk=[], t=0;
   function build(){
     W=cv.width=hero.clientWidth; H=cv.height=hero.clientHeight;
@@ -556,7 +553,7 @@ var _reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
 })();
 // C) PARALLAX: el fondo del hero se mueve mas lento al hacer scroll
 (function(){
-  var bg=document.querySelector('.hero-bg'); if(!bg||_reduce) return;
+  var bg=document.querySelector('.hero-bg'); if(!bg) return;
   addEventListener('scroll',function(){
     var y=window.scrollY||0; if(y<1000) bg.style.transform='translateY('+(y*0.28)+'px)';
   },{passive:true});
