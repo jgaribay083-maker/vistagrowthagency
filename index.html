@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <style>
 :root{
   --bg:#060608; --bg2:#0b0b0f; --panel:#101015; --panel2:#15151c;
@@ -32,7 +33,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
   background-size:54px 54px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000,transparent 75%)}
 .container{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
 .gold{color:var(--gold)}
-.grad-text{background:linear-gradient(100deg,var(--gold) 0%,var(--gold-soft) 55%,#fff 120%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.grad-text{color:var(--gold)}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-weight:700;font-size:15px;border-radius:12px;cursor:pointer;padding:15px 26px;border:1px solid transparent;transition:.22s;text-decoration:none;letter-spacing:.2px;white-space:nowrap}
@@ -100,14 +101,16 @@ html.js .hero-inner .hero-stats{opacity:0;animation:heroUp .7s ease forwards;ani
 /* section base */
 section{padding:84px 0;position:relative}
 .sec-head{text-align:center;max-width:680px;margin:0 auto 50px}
-.tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.tag{display:none}
 .sec-head h2{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(28px,4.6vw,46px);line-height:1.1;letter-spacing:-.5px;margin-bottom:16px}
 .sec-head p{color:var(--dim);font-size:16px;font-weight:300}
 
 /* metrics band */
 .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.metric{border:1px solid var(--line);border-radius:18px;background:linear-gradient(160deg,var(--panel),#0a0a0e);padding:36px 24px;text-align:center;position:relative;overflow:hidden}
-.metric::before{content:'';position:absolute;inset:0;background:radial-gradient(60% 80% at 50% 0%,rgba(212,175,55,.10),transparent 70%)}
+.metrics{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.metric{padding:30px 24px;text-align:center;position:relative}
+.metric+.metric{border-left:1px solid var(--line-soft)}
+.metric::before{content:none}
 .metric .big{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(40px,6vw,58px);line-height:1;position:relative}
 .metric .lab{color:var(--dim);font-size:14px;margin-top:10px;position:relative}
 .metrics-note{text-align:center;color:var(--faint);font-size:11px;margin-top:16px}
@@ -127,6 +130,7 @@ section{padding:84px 0;position:relative}
 .serv.feat{border-color:var(--gold);background:linear-gradient(180deg,rgba(212,175,55,.08),#0a0a0e)}
 .serv .fbadge{position:absolute;top:18px;right:18px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#1a1500;background:linear-gradient(135deg,var(--gold),var(--gold-soft));padding:5px 11px;border-radius:99px}
 .serv .ic{font-size:30px;margin-bottom:16px;display:block}
+i.ph{color:var(--gold);line-height:1}
 .serv h3{font-size:19px;margin-bottom:10px}
 .serv p{color:var(--dim);font-size:13.5px;font-weight:300}
 .serv ul{list-style:none;margin-top:16px;display:grid;gap:8px}
@@ -136,7 +140,7 @@ section{padding:84px 0;position:relative}
 /* process */
 .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .proc{border:1px solid var(--line-soft);border-radius:16px;background:rgba(255,255,255,.02);padding:28px 22px;position:relative}
-.proc .num{font-family:'Playfair Display',serif;font-weight:900;font-size:46px;background:linear-gradient(180deg,var(--gold),transparent);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:.9;margin-bottom:10px}
+.proc .num{font-family:'Playfair Display',serif;font-weight:900;font-size:46px;color:var(--gold);opacity:.9;line-height:.9;margin-bottom:10px}
 .proc h3{font-size:17px;margin-bottom:8px}
 .proc p{color:var(--faint);font-size:13px;font-weight:300}
 
@@ -282,7 +286,7 @@ html.js .reveal.in{opacity:1;transform:none}
   <div class="hero-beam" aria-hidden="true"></div>
   <canvas class="hero-fx" aria-hidden="true"></canvas>
   <div class="container hero-inner">
-    <div class="eyebrow"><span class="dot"></span> Agencia de Marketing · Phoenix, AZ · Bilingüe</div>
+    <div class="eyebrow"><i class="ph ph-map-pin"></i> Agencia de Marketing · Phoenix, AZ · Bilingüe</div>
     <h1>Consigue más clientes con <span class="grad-text">Meta Ads, automatización e inteligencia artificial.</span></h1>
     <p class="sub">Ayudamos a negocios locales y empresas a generar más leads, aumentar ventas y automatizar procesos para crecer más rápido.</p>
     <div class="hero-cta">
@@ -297,11 +301,11 @@ html.js .reveal.in{opacity:1;transform:none}
   </div>
   <div class="trust">
     <div class="container trust-in">
-      <div class="trust-item"><b>📈</b> Meta Business Partner</div>
-      <div class="trust-item"><b>🇺🇸🇲🇽</b> 100% Bilingüe</div>
-      <div class="trust-item"><b>🤖</b> Potenciado con IA</div>
-      <div class="trust-item"><b>🛡️</b> Pixel Guard™</div>
-      <div class="trust-item"><b>🎯</b> Enfoque en ROI</div>
+      <div class="trust-item"><b><i class="ph ph-meta-logo"></i></b> Meta Business Partner</div>
+      <div class="trust-item"><b><i class="ph ph-translate"></i></b> 100% Bilingüe</div>
+      <div class="trust-item"><b><i class="ph ph-robot"></i></b> Potenciado con IA</div>
+      <div class="trust-item"><b><i class="ph ph-shield-check"></i></b> Pixel Guard™</div>
+      <div class="trust-item"><b><i class="ph ph-target"></i></b> Enfoque en ROI</div>
     </div>
   </div>
 </header>
@@ -323,11 +327,11 @@ html.js .reveal.in{opacity:1;transform:none}
   <div class="container">
     <div class="sec-head reveal"><span class="tag">La diferencia</span><h2>¿Por qué elegir <span class="gold">Vista Growth Agency</span>?</h2><p>No somos una agencia más. Somos tu socio de crecimiento.</p></div>
     <div class="why-grid">
-      <div class="why reveal"><div class="ic">📊</div><h4>Estrategias basadas en datos</h4><p>Cada decisión respaldada por números, no por corazonadas.</p></div>
-      <div class="why reveal"><div class="ic">🤖</div><h4>Automatización con IA</h4><p>Tecnología que trabaja por ti 24/7 y te da ventaja injusta.</p></div>
-      <div class="why reveal"><div class="ic">🔧</div><h4>Optimización constante</h4><p>Mejoramos tus campañas cada semana, sin descanso.</p></div>
-      <div class="why reveal"><div class="ic">🎯</div><h4>Enfoque en ROI</h4><p>Si no genera dinero, no lo hacemos. Punto.</p></div>
-      <div class="why reveal"><div class="ic">🤝</div><h4>Atención personalizada</h4><p>Hablas directo con el fundador, no con un call center.</p></div>
+      <div class="why reveal"><div class="ic"><i class="ph ph-chart-line"></i></div><h4>Estrategias basadas en datos</h4><p>Cada decisión respaldada por números, no por corazonadas.</p></div>
+      <div class="why reveal"><div class="ic"><i class="ph ph-robot"></i></div><h4>Automatización con IA</h4><p>Tecnología que trabaja por ti 24/7 y te da ventaja injusta.</p></div>
+      <div class="why reveal"><div class="ic"><i class="ph ph-gear"></i></div><h4>Optimización constante</h4><p>Mejoramos tus campañas cada semana, sin descanso.</p></div>
+      <div class="why reveal"><div class="ic"><i class="ph ph-target"></i></div><h4>Enfoque en ROI</h4><p>Si no genera dinero, no lo hacemos. Punto.</p></div>
+      <div class="why reveal"><div class="ic"><i class="ph ph-handshake"></i></div><h4>Atención personalizada</h4><p>Hablas directo con el fundador, no con un call center.</p></div>
     </div>
   </div>
 </section>
@@ -337,12 +341,12 @@ html.js .reveal.in{opacity:1;transform:none}
   <div class="container">
     <div class="sec-head reveal"><span class="tag">Qué hacemos</span><h2>Servicios que <span class="gold">generan crecimiento</span></h2><p>Todo diseñado con una sola meta: más clientes y más ventas para ti.</p></div>
     <div class="serv-grid">
-      <div class="serv reveal"><span class="ic">📈</span><h3>Meta Ads</h3><p>Campañas de Facebook e Instagram que llegan a la persona correcta, en el momento correcto.</p><ul><li>Estrategia y configuración</li><li>Segmentación avanzada</li><li>Pruebas A/B de creativos</li><li>Optimización semanal</li></ul></div>
-      <div class="serv feat reveal"><div class="fbadge">Nuevo</div><span class="ic">🤖</span><h3>Automatización e IA</h3><p>Respuestas automáticas, seguimiento de leads y flujos inteligentes que cierran ventas mientras duermes.</p><ul><li>Chatbots y respuestas auto</li><li>Seguimiento de leads</li><li>Flujos de WhatsApp/email</li><li>Reportes automáticos</li></ul></div>
-      <div class="serv reveal"><span class="ic">🎬</span><h3>Estrategia de Contenido</h3><p>Contenido que detiene el scroll, construye marca y convierte seguidores en clientes.</p><ul><li>Calendario de contenido</li><li>Reels y Stories</li><li>Copywriting de ventas</li><li>Crecimiento orgánico</li></ul></div>
-      <div class="serv reveal"><span class="ic">🌐</span><h3>Diseño Web</h3><p>Sitios y landing pages premium, optimizados para convertir visitantes en prospectos.</p><ul><li>Landing pages a la medida</li><li>Optimizado para celular</li><li>SEO básico</li><li>Integración de Pixel</li></ul></div>
-      <div class="serv reveal"><span class="ic">🛡️</span><h3>Pixel Guard™</h3><p>Nuestra tecnología propia que bloquea bots y leads falsos, protegiendo tu presupuesto de anuncios.</p><ul><li>Detección de bots/spam</li><li>Análisis de comportamiento</li><li>Protege tu Meta Pixel</li><li>Solo leads reales</li></ul></div>
-      <div class="serv reveal"><span class="ic">💎</span><h3>Branding</h3><p>Identidad visual y voz de marca que te hacen destacar en un mercado saturado.</p><ul><li>Identidad visual</li><li>Branding en redes</li><li>Posicionamiento</li><li>Estrategia de marca</li></ul></div>
+      <div class="serv reveal"><span class="ic"><i class="ph ph-megaphone-simple"></i></span><h3>Meta Ads</h3><p>Campañas de Facebook e Instagram que llegan a la persona correcta, en el momento correcto.</p><ul><li>Estrategia y configuración</li><li>Segmentación avanzada</li><li>Pruebas A/B de creativos</li><li>Optimización semanal</li></ul></div>
+      <div class="serv feat reveal"><div class="fbadge">Nuevo</div><span class="ic"><i class="ph ph-robot"></i></span><h3>Automatización e IA</h3><p>Respuestas automáticas, seguimiento de leads y flujos inteligentes que cierran ventas mientras duermes.</p><ul><li>Chatbots y respuestas auto</li><li>Seguimiento de leads</li><li>Flujos de WhatsApp/email</li><li>Reportes automáticos</li></ul></div>
+      <div class="serv reveal"><span class="ic"><i class="ph ph-film-slate"></i></span><h3>Estrategia de Contenido</h3><p>Contenido que detiene el scroll, construye marca y convierte seguidores en clientes.</p><ul><li>Calendario de contenido</li><li>Reels y Stories</li><li>Copywriting de ventas</li><li>Crecimiento orgánico</li></ul></div>
+      <div class="serv reveal"><span class="ic"><i class="ph ph-globe"></i></span><h3>Diseño Web</h3><p>Sitios y landing pages premium, optimizados para convertir visitantes en prospectos.</p><ul><li>Landing pages a la medida</li><li>Optimizado para celular</li><li>SEO básico</li><li>Integración de Pixel</li></ul></div>
+      <div class="serv reveal"><span class="ic"><i class="ph ph-shield-check"></i></span><h3>Pixel Guard™</h3><p>Nuestra tecnología propia que bloquea bots y leads falsos, protegiendo tu presupuesto de anuncios.</p><ul><li>Detección de bots/spam</li><li>Análisis de comportamiento</li><li>Protege tu Meta Pixel</li><li>Solo leads reales</li></ul></div>
+      <div class="serv reveal"><span class="ic"><i class="ph ph-diamond"></i></span><h3>Branding</h3><p>Identidad visual y voz de marca que te hacen destacar en un mercado saturado.</p><ul><li>Identidad visual</li><li>Branding en redes</li><li>Posicionamiento</li><li>Estrategia de marca</li></ul></div>
     </div>
   </div>
 </section>
@@ -425,7 +429,7 @@ html.js .reveal.in{opacity:1;transform:none}
         </div>
       </div>
       <div class="urgency">
-        <span class="ic">⏳</span>
+        <span class="ic"><i class="ph ph-hourglass-medium"></i></span>
         <p><b>Cupos limitados:</b> solo aceptamos un número limitado de clientes cada mes para garantizar resultados de alta calidad. Aparta tu lugar.</p>
       </div>
     </div>
