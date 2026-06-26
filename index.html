@@ -216,6 +216,15 @@ i.ph{color:var(--gold);line-height:1}
 .done{display:none;text-align:center;padding:20px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.4);border-radius:12px;margin-top:14px;color:#8ff0b5}
 .done.show{display:block}
 
+/* portfolio */
+.port-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.port-card{border:1px solid var(--line);border-radius:20px;background:linear-gradient(160deg,var(--panel),#0a0a0e);padding:32px;display:flex;flex-direction:column;gap:10px}
+.port-badge{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.2);border-radius:99px;padding:5px 12px;display:inline-block;align-self:flex-start}
+.port-card h3{font-family:'Playfair Display',serif;font-size:22px;margin:0}
+.port-card p{color:var(--dim);font-size:14px;flex:1}
+.port-link{display:inline-flex;align-items:center;gap:6px;color:var(--gold);font-weight:700;font-size:14px;text-decoration:none;margin-top:6px;transition:gap .2s}
+.port-link:hover{gap:12px}
+
 /* whatsapp float */
 .wa-float{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;align-items:center;gap:10px;text-decoration:none;background:linear-gradient(135deg,#1faa55,#25d366);color:#04230f;font-weight:700;padding:14px 18px;border-radius:999px;box-shadow:0 16px 40px -10px rgba(37,211,102,.7);animation:pop .5s .9s both}
 @keyframes pop{from{transform:scale(.6) translateY(20px);opacity:0}to{transform:none;opacity:1}}
@@ -382,6 +391,27 @@ html.js .reveal.in{opacity:1;transform:none}
         <div class="stars">★★★★★</div>
         <p class="tquote">"Vista Growth transformó nuestra presencia online. Su enfoque bilingüe nos ayudó a llegar a clientes que antes no podíamos. ¡Totalmente recomendados!"</p>
         <div class="tauthor"><div class="tav">R</div><div><b>Rosa G.</b><span>Shopwithrossy</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTAFOLIO -->
+<section>
+  <div class="container">
+    <div class="sec-head reveal"><span class="tag">Portafolio</span><h2>Sitios que <span class="gold">hemos construido</span></h2></div>
+    <div class="port-grid">
+      <div class="port-card reveal">
+        <div class="port-badge">E-commerce · Moda</div>
+        <h3>Shopwithrossy</h3>
+        <p>Boutique de moda para revendedoras en México. Sitio web con Reels integrados, Pixel Guard™ activo y campañas de Meta Ads.</p>
+        <a class="port-link" href="https://shopwithrossy.com" target="_blank" rel="noopener">Ver sitio →</a>
+      </div>
+      <div class="port-card reveal">
+        <div class="port-badge">Restaurante · Pedidos en línea</div>
+        <h3>Burritos y Gorditas el Güero</h3>
+        <p>Landing page + sistema de pedidos con pago anticipado vía Mercado Pago y comanda automática a WhatsApp. Pixel Guard™ activo.</p>
+        <a class="port-link" href="https://jgaribay083-maker.github.io/burritos-y-gorditas-el-guero/" target="_blank" rel="noopener">Ver sitio →</a>
       </div>
     </div>
   </div>
