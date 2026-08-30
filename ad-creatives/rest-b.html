@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1350px;overflow:hidden;font-family:'Inter',sans-serif}
+.ad{width:1080px;height:1350px;position:relative;overflow:hidden;background:#070707;color:#fff;display:flex;flex-direction:column;align-items:center;padding:56px 56px 46px}
+.ad::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 42% at 50% 5%,rgba(212,175,55,.13),transparent 60%),radial-gradient(ellipse 80% 45% at 50% 103%,rgba(212,175,55,.10),transparent 55%)}
+.ad::after{content:'';position:absolute;inset:14px;border:1px solid rgba(212,175,55,.26);border-radius:26px;pointer-events:none}
+.inner{position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:space-between}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:40px;letter-spacing:8px;color:#D4AF37;line-height:1}
+.logo small{display:block;font-family:'Inter';font-weight:300;font-size:12px;letter-spacing:8px;color:#8a8a8a;text-transform:uppercase;margin-top:6px}
+h1{text-align:center;margin-top:0;font-family:'Playfair Display',serif;font-weight:900;font-size:62px;line-height:1.04;letter-spacing:-1px;max-width:920px}
+h1 em{font-style:normal;color:#D4AF37}
+.search{width:900px;margin-top:0;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 40px 80px -28px rgba(0,0,0,.9)}
+.search .top{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid #e6e6e6}
+.search .g{font-weight:700;font-size:21px;letter-spacing:-.5px}
+.search .g i{font-style:normal}
+.search .g i:nth-child(1){color:#4285F4}.search .g i:nth-child(2){color:#EA4335}.search .g i:nth-child(3){color:#FBBC05}.search .g i:nth-child(4){color:#4285F4}.search .g i:nth-child(5){color:#34A853}.search .g i:nth-child(6){color:#EA4335}
+.search .box{flex:1;background:#f1f3f4;border-radius:99px;padding:11px 20px;color:#202124;font-size:18px;font-weight:500}
+.search .body{padding:40px 34px 34px;text-align:center}
+.search .body .none{color:#202124;font-size:29px;font-weight:700}
+.search .body .desc{margin-top:10px;color:#5f6368;font-size:18px;line-height:1.5}
+.search .rows{margin-top:24px;text-align:left;border-top:1px solid #eee;padding-top:16px}
+.search .row{display:flex;align-items:center;gap:12px;padding:13px 0;font-size:20px}
+.search .row b{color:#1a0dab;font-weight:500}
+.search .row .tag{margin-left:auto;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:#0b8043;font-weight:700;background:#e6f4ea;padding:4px 10px;border-radius:5px}
+.search .row.you b{color:#b31412}
+.search .row.you .tag{color:#b31412;background:#fce8e6}
+.mid{padding-top:0;text-align:center}
+.mid .line{font-size:26px;line-height:1.45;color:#dedede;font-weight:400;max-width:880px}
+.mid .line b{color:#fff;font-weight:800}
+.mid .price{margin-top:18px;font-family:'Playfair Display',serif;font-weight:900;font-size:104px;line-height:.9;color:#fff}
+.mid .price b{color:#D4AF37}
+.mid .pay{font-size:18px;letter-spacing:2.5px;text-transform:uppercase;color:#c9c9c9;font-weight:500;margin-top:10px}
+.mid .pay b{color:#fff;font-weight:800}
+.cta{margin-top:24px;width:100%;background:#25d366;border-radius:15px;display:flex;align-items:center;justify-content:center;gap:15px;padding:22px;box-shadow:0 22px 46px -22px rgba(37,211,102,.85)}
+.cta svg{width:37px;height:37px;fill:#04230f}
+.cta .txt{color:#04230f}
+.cta .txt b{display:block;font-size:26px;font-weight:900;line-height:1}
+.cta .txt span{font-size:15px;font-weight:600;opacity:.82}
+</style></head><body>
+<div class="ad"><div class="inner">
+  <div class="logo">VGA<small>Vista Growth Agency</small></div>
+  <h1>Buscan dónde comer en Mesa.<br><em>Tu restaurante no sale.</em></h1>
+  <div class="search">
+    <div class="top">
+      <div class="g"><i>G</i><i>o</i><i>o</i><i>g</i><i>l</i><i>e</i></div>
+      <div class="box">restaurante mexicano cerca de mí</div>
+    </div>
+    <div class="body">
+      <div class="none">Sin página web, no hay qué mostrar</div>
+      <div class="desc">La gente decide con lo que sí encuentra en el celular.</div>
+      <div class="rows">
+        <div class="row"><b>El restaurante de enfrente</b><span class="tag">Aparece</span></div>
+        <div class="row"><b>La cadena del centro comercial</b><span class="tag">Aparece</span></div>
+        <div class="row you"><b>Tu restaurante</b><span class="tag">No aparece</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="mid">
+    <div class="line">Te hago tu página completa: <b>menú con fotos, ubicación, horarios y botón de WhatsApp.</b> Lista en 48 horas.</div>
+    <div class="price">$<b>197</b></div>
+    <div class="pay">Y pagas <b>hasta que la veas</b> terminada</div>
+  </div>
+  <div class="cta">
+    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043z"/></svg>
+    <div class="txt"><b>ESCRÍBEME POR WHATSAPP</b><span>Te enseño las que ya hice</span></div>
+  </div>
+</div></div></body></html>

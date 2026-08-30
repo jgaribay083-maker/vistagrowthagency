@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1350px;overflow:hidden;font-family:'Inter',sans-serif}
+.ad{width:1080px;height:1350px;position:relative;overflow:hidden;background:#070707;color:#fff;display:flex;flex-direction:column;align-items:center;padding:60px 58px 46px}
+.ad::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 45% at 50% 6%,rgba(212,175,55,.15),transparent 60%),radial-gradient(ellipse 80% 45% at 50% 103%,rgba(212,175,55,.10),transparent 55%)}
+.ad::after{content:'';position:absolute;inset:14px;border:1px solid rgba(212,175,55,.26);border-radius:26px;pointer-events:none}
+.inner{position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:space-between}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:40px;letter-spacing:8px;color:#D4AF37;line-height:1}
+.logo small{display:block;font-family:'Inter';font-weight:300;font-size:12px;letter-spacing:8px;color:#8a8a8a;text-transform:uppercase;margin-top:6px}
+.kicker{margin-top:0;font-size:17px;letter-spacing:6px;text-transform:uppercase;color:#e0c469;font-weight:600}
+h1{text-align:center;margin-top:12px;font-family:'Playfair Display',serif;font-weight:900;font-size:112px;line-height:.92;letter-spacing:-2px}
+h1 em{font-style:normal;color:#D4AF37}
+.note{margin-top:24px;font-size:24px;color:#b6b6b6;font-weight:400;text-align:center}
+.steps{width:100%;margin-top:0;display:flex;flex-direction:column;gap:20px}
+.step{display:flex;align-items:center;gap:22px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-left:3px solid #D4AF37;border-radius:14px;padding:28px 28px}
+.step .n{font-family:'Playfair Display',serif;font-weight:900;font-size:44px;color:#D4AF37;line-height:1;width:50px;flex:0 0 auto;text-align:center}
+.step .t b{display:block;font-size:29px;font-weight:800;letter-spacing:-.3px}
+.step .t span{display:block;font-size:19px;color:#9c9c9c;margin-top:4px;font-weight:400}
+.step.pay{background:rgba(212,175,55,.10);border-color:rgba(212,175,55,.38);border-left-color:#D4AF37}
+.step.pay .t b{color:#D4AF37}
+.kill{padding-top:0;width:100%;text-align:center}
+.kill .l{font-size:24px;letter-spacing:.5px;color:#cfcfcf;font-weight:500}
+.kill .l b{color:#fff;font-weight:800}
+.kill .row{margin-top:16px;display:flex;justify-content:center;gap:14px}
+.kill .row span{border:1px solid rgba(255,255,255,.14);border-radius:99px;padding:10px 21px;font-size:16px;color:#cfcfcf;font-weight:600;letter-spacing:.4px}
+.cta{margin-top:24px;width:100%;background:#25d366;border-radius:15px;display:flex;align-items:center;justify-content:center;gap:15px;padding:22px;box-shadow:0 22px 46px -22px rgba(37,211,102,.85)}
+.cta svg{width:37px;height:37px;fill:#04230f}
+.cta .txt{color:#04230f}
+.cta .txt b{display:block;font-size:26px;font-weight:900;line-height:1}
+.cta .txt span{font-size:15px;font-weight:600;opacity:.82}
+</style></head><body>
+<div class="ad"><div class="inner">
+  <div class="logo">VGA<small>Vista Growth Agency</small></div>
+  <div class="kicker">Así trabajo con restaurantes</div>
+  <h1>Hoy pagas <em>$0</em></h1>
+  <div class="note">Y si no te gusta, tampoco pagas mañana.</div>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div class="t"><b>Me cuentas de tu negocio</b><span>5 minutos por WhatsApp</span></div></div>
+    <div class="step"><div class="n">2</div><div class="t"><b>Te hago la página completa</b><span>Menú, fotos, ubicación y WhatsApp · 48 horas</span></div></div>
+    <div class="step"><div class="n">3</div><div class="t"><b>Te la enseño terminada</b><span>Funcionando, en tu celular</span></div></div>
+    <div class="step pay"><div class="n">4</div><div class="t"><b>Si te gusta, me pagas $197</b><span>Si no te gusta, no me pagas nada</span></div></div>
+  </div>
+  <div class="kill">
+    <div class="l">Sin contratos. Sin mensualidades. <b>Sin adelanto.</b></div>
+    <div class="row"><span>Restaurantes de Arizona</span><span>Se atiende en español</span></div>
+  </div>
+  <div class="cta">
+    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043z"/></svg>
+    <div class="txt"><b>MÁNDAME MENSAJE</b><span>Y empezamos hoy</span></div>
+  </div>
+</div></div></body></html>
