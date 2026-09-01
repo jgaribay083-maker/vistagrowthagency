@@ -266,6 +266,18 @@ html.js .reveal.in{opacity:1;transform:none}
   .hero-bg{object-position:center 30%}
 }
 @media(max-width:640px){
+  /* LA FOTO EN CELULAR: la del hero es horizontal (16:9) y la pantalla es
+     vertical. Con object-fit:cover el recorte se queda con una columna del
+     centro — puro cielo — y se pierden los saguaros, la montana y las luces,
+     que es justo lo que la hace ver como Phoenix.
+     Solucion: en celular se muestra COMPLETA, anclada abajo como una franja
+     de paisaje. Arriba queda el cielo oscuro con las estrellas, que es donde
+     va el titular. */
+  .hero-bg{top:auto;bottom:0;left:0;width:100%;height:auto;object-fit:fill;transform:none!important}
+  /* Degradado que funde la franja con el fondo, para que no se vea pegada. */
+  .hero-shade{background:
+    linear-gradient(180deg,var(--bg) 0%,rgba(6,6,8,.92) 34%,rgba(6,6,8,.55) 62%,rgba(6,6,8,.35) 78%,var(--bg) 100%)}
+
   .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:74%;flex-direction:column;align-items:flex-start;justify-content:center;gap:22px;padding:40px;background:rgba(8,8,11,.97);backdrop-filter:blur(16px);border-left:1px solid var(--line-soft);transition:right .3s}
   .nav-links.open{right:0}
   .burger{display:flex;z-index:101}
@@ -641,6 +653,7 @@ html.js .reveal.in{opacity:1;transform:none}
 // C) PARALLAX: el fondo del hero se mueve mas lento al hacer scroll
 (function(){
   var bg=document.querySelector('.hero-bg'); if(!bg) return;
+  if(innerWidth<=640) return;   // en celular la foto va fija abajo
   addEventListener('scroll',function(){
     var y=window.scrollY||0; if(y<1000) bg.style.transform='translateY('+(y*0.28)+'px)';
   },{passive:true});
