@@ -73,20 +73,20 @@ header.hero .sub{font-size:clamp(16px,2.4vw,20px);color:var(--dim);font-weight:3
 /* hero FULL-BLEED: imagen de fondo + texto encima */
 .hero-bg{position:absolute;top:-15%;left:0;width:100%;height:130%;object-fit:cover;object-position:center 32%;z-index:-1;will-change:transform}
 .hero-fx{position:absolute;inset:0;z-index:1;pointer-events:none}
-/* CIELO DE TODA LA PAGINA: canvas FIJO detras de todo el contenido.
-   Al ser fixed, las estrellas se quedan mientras haces scroll — se siente
-   una sola atmosfera de arriba a abajo en vez de solo el hero. */
+/* CIELO DE TODA LA PAGINA: canvas FIJO detras de todo el contenido. Al ser
+   fixed, las estrellas acompanan el scroll y se siente una sola atmosfera de
+   arriba a abajo, no solo en el hero. */
 .sky-fx{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-/* El contenido va ENCIMA del cielo. Las secciones ya eran position:relative,
-   solo les falta subir de capa. */
+/* El contenido va encima del cielo. OJO: aqui NO se toca 'nav' (es fixed con
+   z-index 100 y bajarlo rompe la barra) ni 'header.hero' (si el hero crea su
+   propia capa se pinta completo encima del canvas y las estrellas
+   desaparecen justo ahi). */
 section,footer,.trust{position:relative;z-index:1}
-/* Con 'reducir movimiento' NO se apaga el cielo: se dibuja quieto (lo
-   decide el JS). Apagarlo dejaba la pagina pelona. */
 .hero-beam{position:absolute;left:50%;top:40%;width:min(880px,92%);height:360px;transform:translate(-50%,-50%);z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,rgba(214,178,72,.22),rgba(212,175,55,.07) 48%,transparent 64%);filter:blur(26px);animation:beam 9s ease-in-out infinite}
 @keyframes beam{0%,100%{transform:translate(-80%,-50%)}50%{transform:translate(-20%,-50%)}}
 .hero-shade{position:absolute;inset:0;z-index:1;background:
-  linear-gradient(180deg,rgba(5,5,8,.62) 0%,rgba(5,5,8,.34) 34%,rgba(5,5,8,.70) 74%,var(--bg) 100%),
-  radial-gradient(120% 80% at 50% 42%,transparent 42%,rgba(5,5,8,.5))}
+  linear-gradient(180deg,rgba(5,5,8,.70) 0%,rgba(5,5,8,.42) 36%,rgba(5,5,8,.72) 74%,var(--bg) 100%),
+  radial-gradient(120% 80% at 50% 40%,transparent 40%,rgba(5,5,8,.5))}
 .hero-inner{position:relative;z-index:2}
 header.hero h1{text-shadow:0 2px 34px rgba(0,0,0,.7)}
 header.hero .sub{color:#e7e7ea;text-shadow:0 1px 18px rgba(0,0,0,.7)}
@@ -266,18 +266,6 @@ html.js .reveal.in{opacity:1;transform:none}
   .hero-bg{object-position:center 30%}
 }
 @media(max-width:640px){
-  /* LA FOTO EN CELULAR: la del hero es horizontal (16:9) y la pantalla es
-     vertical. Con object-fit:cover el recorte se queda con una columna del
-     centro — puro cielo — y se pierden los saguaros, la montana y las luces,
-     que es justo lo que la hace ver como Phoenix.
-     Solucion: en celular se muestra COMPLETA, anclada abajo como una franja
-     de paisaje. Arriba queda el cielo oscuro con las estrellas, que es donde
-     va el titular. */
-  .hero-bg{top:auto;bottom:0;left:0;width:100%;height:auto;object-fit:fill;transform:none!important}
-  /* Degradado que funde la franja con el fondo, para que no se vea pegada. */
-  .hero-shade{background:
-    linear-gradient(180deg,var(--bg) 0%,rgba(6,6,8,.92) 34%,rgba(6,6,8,.55) 62%,rgba(6,6,8,.35) 78%,var(--bg) 100%)}
-
   .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:74%;flex-direction:column;align-items:flex-start;justify-content:center;gap:22px;padding:40px;background:rgba(8,8,11,.97);backdrop-filter:blur(16px);border-left:1px solid var(--line-soft);transition:right .3s}
   .nav-links.open{right:0}
   .burger{display:flex;z-index:101}
@@ -312,7 +300,7 @@ html.js .reveal.in{opacity:1;transform:none}
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <img class="hero-bg" src="hero.jpg" alt="Atardecer en el desierto de Phoenix, Arizona">
+  <img class="hero-bg" src="hero.jpg" alt="Resultados de marketing: campañas de Meta Ads en crecimiento">
   <div class="hero-shade"></div>
   <div class="hero-beam" aria-hidden="true"></div>
   <div class="container hero-inner">
@@ -580,20 +568,15 @@ html.js .reveal.in{opacity:1;transform:none}
 })();
 
 // CIELO: estrellas doradas que suben despacio y titilan, en TODA la pagina.
-// Va sobre un canvas FIJO del tamano de la ventana, no del hero, para que
-// acompanen el scroll. La cantidad se calcula por area para que no se vea
-// vacio en monitor grande ni saturado en celular.
+// Va sobre un canvas FIJO del tamano de la ventana (no del hero) para que
+// acompanen el scroll. La cantidad se calcula por area de pantalla: ni vacio
+// en monitor grande ni saturado en celular.
 (function(){
   var cv=document.querySelector('.sky-fx'); if(!cv) return;
-  // Las estrellas se mueven SIEMPRE. Se probo respetar 'reducir movimiento'
-  // del sistema, pero eso las dejaba quietas en la maquina de Josue (y era
-  // el efecto que ya tenia y le gustaba). Es un fondo sutil, no parpadea
-  // ni se mueve rapido, asi que no molesta.
-  var QUIETO=false;
   var ctx=cv.getContext('2d'), W=0,H=0, parts=[], twk=[], t=0, dpr=1;
 
   function build(){
-    dpr=Math.min(devicePixelRatio||1,2);          // en pantallas retina, nitido
+    dpr=Math.min(devicePixelRatio||1,2);          // nitido en pantallas retina
     W=innerWidth; H=innerHeight;
     cv.width=W*dpr; cv.height=H*dpr;
     cv.style.width=W+'px'; cv.style.height=H+'px';
@@ -604,12 +587,11 @@ html.js .reveal.in{opacity:1;transform:none}
       x:Math.random()*W, y:Math.random()*H,
       r:Math.random()*1.7+.45,
       s:Math.random()*.30+.06,                    // velocidad de subida
-      o:Math.random()*.40+.18,                    // opacidad base
+      o:Math.random()*.40+.18,
       dx:(Math.random()-.5)*.16,                  // deriva lateral
       ph:Math.random()*6.28,
       sp:Math.random()*.02+.006                   // que tan rapido titila
     });
-    // Unos cuantos puntos mas grandes y calidos, como luces lejanas.
     var m=Math.round(n*0.22);
     twk=[]; for(var j=0;j<m;j++) twk.push({
       x:Math.random()*W, y:Math.random()*H,
@@ -620,19 +602,17 @@ html.js .reveal.in{opacity:1;transform:none}
 
   function frame(){
     t++; ctx.clearRect(0,0,W,H);
-
     ctx.shadowColor='rgba(212,175,55,.55)'; ctx.shadowBlur=5;
     for(var i=0;i<parts.length;i++){
       var p=parts[i];
       p.y-=p.s; p.x+=p.dx;
       if(p.y<-8){ p.y=H+8; p.x=Math.random()*W; }
       if(p.x<-8) p.x=W+8; else if(p.x>W+8) p.x=-8;
-      var a=p.o*(0.55+0.45*Math.sin(t*p.sp+p.ph));   // titileo
+      var a=p.o*(0.55+0.45*Math.sin(t*p.sp+p.ph));
       ctx.fillStyle='rgba(222,190,95,'+a.toFixed(3)+')';
       ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832); ctx.fill();
     }
     ctx.shadowBlur=0;
-
     for(var j=0;j<twk.length;j++){
       var k=twk[j];
       var b=0.14+0.34*(0.5+0.5*Math.sin(t*k.sp+k.ph)), rr=k.r*4.2;
@@ -641,19 +621,15 @@ html.js .reveal.in{opacity:1;transform:none}
       g.addColorStop(1,'rgba(255,208,120,0)');
       ctx.fillStyle=g; ctx.beginPath(); ctx.arc(k.x,k.y,rr,0,6.2832); ctx.fill();
     }
-    if(!QUIETO) requestAnimationFrame(frame);
+    requestAnimationFrame(frame);
   }
 
-  var rt; addEventListener('resize',function(){
-    clearTimeout(rt); rt=setTimeout(function(){ build(); if(QUIETO) frame(); },150);
-  });
-  build();
-  frame();   // si QUIETO, frame() pinta una sola vez y no se vuelve a llamar
+  var rt; addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(build,150);});
+  build(); frame();
 })();
 // C) PARALLAX: el fondo del hero se mueve mas lento al hacer scroll
 (function(){
   var bg=document.querySelector('.hero-bg'); if(!bg) return;
-  if(innerWidth<=640) return;   // en celular la foto va fija abajo
   addEventListener('scroll',function(){
     var y=window.scrollY||0; if(y<1000) bg.style.transform='translateY('+(y*0.28)+'px)';
   },{passive:true});
