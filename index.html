@@ -59,7 +59,7 @@ nav.scrolled{background:rgba(8,8,11,.82);backdrop-filter:blur(14px);border-botto
 .burger span{width:24px;height:2px;background:var(--txt);transition:.3s}
 
 /* hero */
-header.hero{position:relative;min-height:96vh;display:flex;flex-direction:column;justify-content:center;padding:130px 0 24px;text-align:center;overflow:hidden}
+header.hero{position:relative;min-height:96vh;display:flex;flex-direction:column;justify-content:center;padding:130px 0 24px;text-align:center;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%, rgba(212,175,55,.13), transparent 58%),radial-gradient(90% 70% at 50% 105%, rgba(212,175,55,.08), transparent 60%)}
 .eyebrow{display:inline-flex;gap:9px;align-items:center;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);border-radius:999px;padding:8px 18px;margin-bottom:28px;background:rgba(212,175,55,.05)}
 .eyebrow .dot{width:7px;height:7px;border-radius:99px;background:var(--gold);box-shadow:0 0 10px var(--gold);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
@@ -73,11 +73,18 @@ header.hero .sub{font-size:clamp(16px,2.4vw,20px);color:var(--dim);font-weight:3
 /* hero FULL-BLEED: imagen de fondo + texto encima */
 .hero-bg{position:absolute;top:-15%;left:0;width:100%;height:130%;object-fit:cover;object-position:center 32%;z-index:0;will-change:transform}
 .hero-fx{position:absolute;inset:0;z-index:1;pointer-events:none}
+/* CIELO DE TODA LA PAGINA: canvas FIJO detras de todo el contenido.
+   Al ser fixed, las estrellas se quedan mientras haces scroll — se siente
+   una sola atmosfera de arriba a abajo en vez de solo el hero. */
+.sky-fx{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+/* El contenido va ENCIMA del cielo. Las secciones ya eran position:relative,
+   solo les falta subir de capa. */
+header.hero,section,footer,.trust{position:relative;z-index:1}
+/* Si el visitante pidio menos movimiento en su sistema, apagamos el cielo. */
+@media(prefers-reduced-motion:reduce){.sky-fx{display:none}}
 .hero-beam{position:absolute;left:50%;top:40%;width:min(880px,92%);height:360px;transform:translate(-50%,-50%);z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,rgba(214,178,72,.22),rgba(212,175,55,.07) 48%,transparent 64%);filter:blur(26px);animation:beam 9s ease-in-out infinite}
 @keyframes beam{0%,100%{transform:translate(-80%,-50%)}50%{transform:translate(-20%,-50%)}}
-.hero-shade{position:absolute;inset:0;z-index:1;background:
-  linear-gradient(180deg,rgba(5,5,8,.70) 0%,rgba(5,5,8,.42) 36%,rgba(5,5,8,.72) 74%,var(--bg) 100%),
-  radial-gradient(120% 80% at 50% 40%,transparent 40%,rgba(5,5,8,.5))}
+.hero-shade{position:absolute;inset:0;z-index:1;background:radial-gradient(120% 80% at 50% 45%,transparent 52%,rgba(5,5,8,.45))}
 .hero-inner{position:relative;z-index:2}
 header.hero h1{text-shadow:0 2px 34px rgba(0,0,0,.7)}
 header.hero .sub{color:#e7e7ea;text-shadow:0 1px 18px rgba(0,0,0,.7)}
@@ -272,6 +279,7 @@ html.js .reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
+<canvas class="sky-fx" aria-hidden="true"></canvas>
 
 <!-- NAV -->
 <nav id="nav">
@@ -290,10 +298,8 @@ html.js .reveal.in{opacity:1;transform:none}
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <img class="hero-bg" src="hero.jpg" alt="Resultados de marketing: campañas de Meta Ads en crecimiento">
   <div class="hero-shade"></div>
   <div class="hero-beam" aria-hidden="true"></div>
-  <canvas class="hero-fx" aria-hidden="true"></canvas>
   <div class="container hero-inner">
     <div class="eyebrow"><i class="ph ph-map-pin"></i> Agencia de Marketing · Phoenix, AZ · Bilingüe</div>
     <h1>Consigue más clientes con <span class="grad-text">Meta Ads, automatización e inteligencia artificial.</span></h1>
@@ -558,33 +564,69 @@ html.js .reveal.in{opacity:1;transform:none}
   }, 2500);
 })();
 
-// HERO FX: A) particulas doradas flotando  B) luces de ciudad parpadeando
+// CIELO: estrellas doradas que suben despacio y titilan, en TODA la pagina.
+// Va sobre un canvas FIJO del tamano de la ventana, no del hero, para que
+// acompanen el scroll. La cantidad se calcula por area para que no se vea
+// vacio en monitor grande ni saturado en celular.
 (function(){
-  var hero=document.querySelector('header.hero'), cv=document.querySelector('.hero-fx');
-  if(!hero||!cv) return;
-  var ctx=cv.getContext('2d'), W=0,H=0, parts=[], twk=[], t=0;
+  var cv=document.querySelector('.sky-fx'); if(!cv) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ctx=cv.getContext('2d'), W=0,H=0, parts=[], twk=[], t=0, dpr=1;
+
   function build(){
-    W=cv.width=hero.clientWidth; H=cv.height=hero.clientHeight;
-    parts=[]; for(var i=0;i<40;i++) parts.push({x:Math.random()*W,y:Math.random()*H,
-      r:Math.random()*1.8+.5,s:Math.random()*.32+.08,o:Math.random()*.4+.22,dx:(Math.random()-.5)*.2});
-    twk=[]; for(var j=0;j<18;j++) twk.push({x:Math.random()*W,y:H*0.62+Math.random()*H*0.36,
-      r:Math.random()*1.3+.6,ph:Math.random()*6.28,sp:Math.random()*.035+.015});
+    dpr=Math.min(devicePixelRatio||1,2);          // en pantallas retina, nitido
+    W=innerWidth; H=innerHeight;
+    cv.width=W*dpr; cv.height=H*dpr;
+    cv.style.width=W+'px'; cv.style.height=H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+
+    var n=Math.round(Math.min(Math.max((W*H)/13000,45),130));
+    parts=[]; for(var i=0;i<n;i++) parts.push({
+      x:Math.random()*W, y:Math.random()*H,
+      r:Math.random()*1.7+.45,
+      s:Math.random()*.30+.06,                    // velocidad de subida
+      o:Math.random()*.40+.18,                    // opacidad base
+      dx:(Math.random()-.5)*.16,                  // deriva lateral
+      ph:Math.random()*6.28,
+      sp:Math.random()*.02+.006                   // que tan rapido titila
+    });
+    // Unos cuantos puntos mas grandes y calidos, como luces lejanas.
+    var m=Math.round(n*0.22);
+    twk=[]; for(var j=0;j<m;j++) twk.push({
+      x:Math.random()*W, y:Math.random()*H,
+      r:Math.random()*1.2+.6, ph:Math.random()*6.28,
+      sp:Math.random()*.03+.012
+    });
   }
+
   function frame(){
     t++; ctx.clearRect(0,0,W,H);
-    ctx.shadowColor='rgba(212,175,55,.6)'; ctx.shadowBlur=5;
-    for(var i=0;i<parts.length;i++){var p=parts[i]; p.y-=p.s; p.x+=p.dx;
-      if(p.y<-6){p.y=H+6;p.x=Math.random()*W;}
-      ctx.fillStyle='rgba(222,190,95,'+p.o+')'; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832); ctx.fill();}
+
+    ctx.shadowColor='rgba(212,175,55,.55)'; ctx.shadowBlur=5;
+    for(var i=0;i<parts.length;i++){
+      var p=parts[i];
+      p.y-=p.s; p.x+=p.dx;
+      if(p.y<-8){ p.y=H+8; p.x=Math.random()*W; }
+      if(p.x<-8) p.x=W+8; else if(p.x>W+8) p.x=-8;
+      var a=p.o*(0.55+0.45*Math.sin(t*p.sp+p.ph));   // titileo
+      ctx.fillStyle='rgba(222,190,95,'+a.toFixed(3)+')';
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832); ctx.fill();
+    }
     ctx.shadowBlur=0;
-    for(var j=0;j<twk.length;j++){var k=twk[j];
-      var a=0.2+0.45*(0.5+0.5*Math.sin(t*k.sp+k.ph)), rr=k.r*4.2;
+
+    for(var j=0;j<twk.length;j++){
+      var k=twk[j];
+      var b=0.14+0.34*(0.5+0.5*Math.sin(t*k.sp+k.ph)), rr=k.r*4.2;
       var g=ctx.createRadialGradient(k.x,k.y,0,k.x,k.y,rr);
-      g.addColorStop(0,'rgba(255,208,120,'+a+')'); g.addColorStop(1,'rgba(255,208,120,0)');
-      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(k.x,k.y,rr,0,6.2832); ctx.fill();}
+      g.addColorStop(0,'rgba(255,208,120,'+b.toFixed(3)+')');
+      g.addColorStop(1,'rgba(255,208,120,0)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(k.x,k.y,rr,0,6.2832); ctx.fill();
+    }
     requestAnimationFrame(frame);
   }
-  addEventListener('resize',build); build(); frame();
+
+  var rt; addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(build,150);});
+  build(); frame();
 })();
 // C) PARALLAX: el fondo del hero se mueve mas lento al hacer scroll
 (function(){
