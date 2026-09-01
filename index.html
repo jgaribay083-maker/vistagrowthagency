@@ -80,8 +80,8 @@ header.hero .sub{font-size:clamp(16px,2.4vw,20px);color:var(--dim);font-weight:3
 /* El contenido va ENCIMA del cielo. Las secciones ya eran position:relative,
    solo les falta subir de capa. */
 header.hero,section,footer,.trust{position:relative;z-index:1}
-/* Si el visitante pidio menos movimiento en su sistema, apagamos el cielo. */
-@media(prefers-reduced-motion:reduce){.sky-fx{display:none}}
+/* Con 'reducir movimiento' NO se apaga el cielo: se dibuja quieto (lo
+   decide el JS). Apagarlo dejaba la pagina pelona. */
 .hero-beam{position:absolute;left:50%;top:40%;width:min(880px,92%);height:360px;transform:translate(-50%,-50%);z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,rgba(214,178,72,.22),rgba(212,175,55,.07) 48%,transparent 64%);filter:blur(26px);animation:beam 9s ease-in-out infinite}
 @keyframes beam{0%,100%{transform:translate(-80%,-50%)}50%{transform:translate(-20%,-50%)}}
 .hero-shade{position:absolute;inset:0;z-index:1;background:radial-gradient(120% 80% at 50% 45%,transparent 52%,rgba(5,5,8,.45))}
@@ -570,7 +570,7 @@ html.js .reveal.in{opacity:1;transform:none}
 // vacio en monitor grande ni saturado en celular.
 (function(){
   var cv=document.querySelector('.sky-fx'); if(!cv) return;
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var QUIETO=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var ctx=cv.getContext('2d'), W=0,H=0, parts=[], twk=[], t=0, dpr=1;
 
   function build(){
@@ -622,11 +622,14 @@ html.js .reveal.in{opacity:1;transform:none}
       g.addColorStop(1,'rgba(255,208,120,0)');
       ctx.fillStyle=g; ctx.beginPath(); ctx.arc(k.x,k.y,rr,0,6.2832); ctx.fill();
     }
-    requestAnimationFrame(frame);
+    if(!QUIETO) requestAnimationFrame(frame);
   }
 
-  var rt; addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(build,150);});
-  build(); frame();
+  var rt; addEventListener('resize',function(){
+    clearTimeout(rt); rt=setTimeout(function(){ build(); if(QUIETO) frame(); },150);
+  });
+  build();
+  frame();   // si QUIETO, frame() pinta una sola vez y no se vuelve a llamar
 })();
 // C) PARALLAX: el fondo del hero se mueve mas lento al hacer scroll
 (function(){
