@@ -300,7 +300,15 @@ html.js .reveal.in{opacity:1;transform:none}
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <img class="hero-bg" src="hero.jpg" alt="Resultados de marketing: campañas de Meta Ads en crecimiento">
+  <!-- La foto del hero es horizontal. En un celular vertical, el recorte de
+       object-fit:cover solo alcanza a mostrar como el 20% del ancho, y esa
+       columna del centro es casi puro cielo: se pierden la montana, los
+       saguaros y las luces. Por eso en pantallas chicas se sirve un recorte
+       VERTICAL de la misma foto, encuadrado en la montana y la ciudad. -->
+  <picture>
+    <source media="(max-width:640px)" srcset="hero-phoenix-movil.jpg">
+    <img class="hero-bg" src="hero.jpg" alt="Atardecer sobre el valle de Phoenix, Arizona">
+  </picture>
   <div class="hero-shade"></div>
   <div class="hero-beam" aria-hidden="true"></div>
   <div class="container hero-inner">
