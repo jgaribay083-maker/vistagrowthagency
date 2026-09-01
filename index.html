@@ -570,7 +570,11 @@ html.js .reveal.in{opacity:1;transform:none}
 // vacio en monitor grande ni saturado en celular.
 (function(){
   var cv=document.querySelector('.sky-fx'); if(!cv) return;
-  var QUIETO=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Las estrellas se mueven SIEMPRE. Se probo respetar 'reducir movimiento'
+  // del sistema, pero eso las dejaba quietas en la maquina de Josue (y era
+  // el efecto que ya tenia y le gustaba). Es un fondo sutil, no parpadea
+  // ni se mueve rapido, asi que no molesta.
+  var QUIETO=false;
   var ctx=cv.getContext('2d'), W=0,H=0, parts=[], twk=[], t=0, dpr=1;
 
   function build(){
